@@ -41,6 +41,8 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 				data={cinemas}
 				renderItem={({ item }) => (
 					<TouchableHighlight 
+						activeOpacity={1}
+						underlayColor={ '#ff784f' }
 						onPress={() => console.log(item.id)}
 						style={[styles.card, styles.shadow]}
 					>

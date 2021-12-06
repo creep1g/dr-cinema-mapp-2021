@@ -1,5 +1,5 @@
 export const one = "#3a3048";
-export const two = "#7b00ff";
+export const two = "#ff784f";
 export const three = "#a600ff";
 export const four = "#2600ff";
 export const five = "#1389ff";
