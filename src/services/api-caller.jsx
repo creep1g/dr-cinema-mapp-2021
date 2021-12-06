@@ -3,7 +3,7 @@ import React from 'react';
 const baseUrl = 'https://api.kvikmyndir.is';
 
 
-	const auth = () => {
+	export const auth = async () => {
 		const requestBody = {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -15,7 +15,7 @@ const baseUrl = 'https://api.kvikmyndir.is';
 			.catch( (error) => console.log(error) )
 	};
 
-	const getUpComing = (token) => {
+	export const getUpComing = async (token) => {
 		const requestBody = {
 			method: 'GET',
 			headers: { "x-access-token": token, 
@@ -28,7 +28,7 @@ const baseUrl = 'https://api.kvikmyndir.is';
 			.catch( (error) => console.log(error) )
 	};
 
-	const getMovies = (token) => {
+	export const getMovies = async (token) => {
 		const requestBody = {
 			method: 'GET',
 			headers: { "x-access-token": token, 
@@ -44,3 +44,16 @@ const baseUrl = 'https://api.kvikmyndir.is';
 
 
 
+	export const getCinemas = async (token) => {
+		const requestBody = {
+			method: 'GET',
+			headers: { "x-access-token": token, 
+								 "Content-Type": "application/json"
+			},
+		};
+
+		fetch('https://api.kvikmyndir.is/theaters', requestBody)
+			.then( (response) => response.json() )
+			.then( (res) => console.log(res) )
+			.catch( (error) => console.log(error) )
+		};

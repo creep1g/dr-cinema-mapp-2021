@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { View, TouchableHighlight, Text } from 'react-native';
 import styles from './styles';
+import * as API from '../../services/api-caller';
 
 const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	
 	const [ cinemas, setCinemas ] = useState([])
 	
-	// Get list of cinemas, 
-	// Display them
-	// Eat salad
+	const token = route.params.token;
 
-	const token = route.params;
-	console.log(token)
+	useEffect( () => {
+		(async () => {
+			setCinemas(API.getCinemas(token));	
+		})();
+	}, []);
+	
 	
 
 	return(

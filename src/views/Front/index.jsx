@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { View, TouchableHighlight, Text } from 'react-native';
 import styles from './styles';
-import Cinemas from '../Cinemas';
+import * as API from '../../services/api-caller';
 // import PropTypes from 'prop-types';
 // import Toolbar from '../../components/toolbar';
 
 const Front = function( { navigation: {navigate} } )  {
 
 	const [token, setToken] = useState();
+
 
 	useEffect( () => {
 		(async () => {
@@ -25,13 +26,14 @@ const Front = function( { navigation: {navigate} } )  {
 		})();
 	}, []);
 	
+
 	return(
 		<View style={ styles.screen }>
 			<TouchableHighlight 
 				style={[styles.buttonCard, styles.shadow]}
 				activeOpacity={ 0.6 }
 				underlayColor={ 'teal' }
-				onPress={() => navigate("Cinemas", { token: {token} })}
+				onPress={() => navigate("Cinemas", { token: token })}
 			>
 				<Text style={styles.text}>Cinemas</Text>
 			</TouchableHighlight>
