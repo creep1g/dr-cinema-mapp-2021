@@ -8,7 +8,7 @@ export default StyleSheet.create ({
 		margin: 10,
 		borderRadius: 10,
 		borderColor: colors.purp,
-		borderWidth: 0.5,
+		// borderWidth: 0.5,
 		padding: 10,
 		backgroundColor: colors.highlight,
 		justifyContent: 'center',
@@ -29,8 +29,15 @@ export default StyleSheet.create ({
 	},
 
 	text: {
+		color: "black",
 		textAlign: 'center',
-		fontSize: 20,
+		fontSize: 25,
+	},
+
+	subtext:{ 
+		color: 'black',
+		textAlign: 'center',
+		fontSize: 16
 	}
 
 })

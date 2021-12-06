@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import styles from './styles';
 import Front from '../views/Front';
 import Cinemas from '../views/Cinemas';
+import CinemaDetails from '../views/CinemaDetails';
 
 const Stack = createStackNavigator();
 
@@ -13,6 +14,7 @@ const Routes = function () {
       <Stack.Navigator initialRouteName="Home">
 				<Stack.Screen options={{ headerStatusBarHeight: 30, headerStyle: styles.header, headerTintColor:'#fff'}}  name="Home" component={Front} />
 				<Stack.Screen options={{ headerStatusBarHeight: 30, headerStyle: styles.header, headerTintColor:'#fff'}}  name="Cinemas" component={Cinemas} />
+				<Stack.Screen options={{ headerStatusBarHeight: 30, headerStyle: styles.header, headerTintColor:'#fff'}}  name="Cinema" component={CinemaDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );

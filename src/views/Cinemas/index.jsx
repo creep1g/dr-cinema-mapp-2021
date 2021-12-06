@@ -43,13 +43,13 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 					<TouchableHighlight 
 						activeOpacity={1}
 						underlayColor={ '#ff784f' }
-						onPress={() => console.log(item.id)}
+						onPress={() => navigate("Cinema", { id: item.id })}
 						style={[styles.card, styles.shadow]}
 					>
 						<View style={{ flex: 1 }}>
 							<Text style={ styles.text }>{ item.name }</Text>
-							<Text style={ styles.text }>{ item["address	"] }</Text>
-							<Text style={ styles.text }> { item.city} </Text>
+							<Text style={ styles.subtext }>{ item["address	"] }</Text>
+							<Text style={ styles.subtext }> { item.city} </Text>
 						</View>
 					</TouchableHighlight>
 				)}
