@@ -4,7 +4,9 @@ import { View, TouchableHighlight, Text } from 'react-native';
 // import PropTypes from 'prop-types';
 // import Toolbar from '../../components/toolbar';
 
-const Front = function( { route, navigation: { navigate } } )  {
+const Front = function( )  {
+
+	const [token, setToken] = useState();
 	useEffect( () => {
 		(async () => {
 			const requestBody = {
