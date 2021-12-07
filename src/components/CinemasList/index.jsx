@@ -7,12 +7,20 @@ import * as colors from '../../styles/colors';
 
 const CinemasList = function ({ cinemas, onSelect }) {
 	
+	console.log(cinemas);
 	const sort = (arr) => {
-		const sortedArr = arr.sort((first, second) => {
-			return first.name.toUpperCase() > second.name.toUpperCase() ? 1 : -1;
-		});
+		if (arr !== null){
+			const sortedArr = arr.sort((first, second) => {
+				return first.name.toUpperCase() > second.name.toUpperCase() ? 1 : -1;
+			});
 
-		return sortedArr;
+			return sortedArr;
+		}
+		else{
+			return [];
+		}
+
+
 	};
 	const sorted = sort(cinemas);
 

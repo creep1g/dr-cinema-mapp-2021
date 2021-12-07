@@ -9,19 +9,20 @@ export default StyleSheet.create({
 		// Shadow for iOS
 		shadowColor: 'black',
 		shadowOpacity: 0.3,
-		shadowRadius: 2,
+		shadowRadius: 3,
 		shadowOffset: {
 			height: 1,
 			width: 2,
 		},
 		// Elevation for android
-		elevation: 4,
+		elevation: 8,
+		
+		overflow: 'hidden'
 	},
 
 	border: {
 		borderColor: colors.one,
 		borderWidth: 0.7,
-		borderStyle: 'dashed'
 	},
 
 	title: {
@@ -94,12 +95,15 @@ export default StyleSheet.create({
 		marginBottom:20,
 		marginTop:0,
 		alignItems: 'center',
+		justifyContent: 'center',
 		backgroundColor: colors.three,
 		width: winWidth-10
 	},
 
-	phoneText: { 
-		color: colors.four,
+
+	addressText: { 
+		textAlign: 'center',
+		color: 'black',
 		fontSize: 18,
 		padding: 10,
 		margin: 10
