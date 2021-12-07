@@ -15,10 +15,12 @@ export default StyleSheet.create ({
 
 	button: {
 		alignItems: 'center',
-		width: 120,
+		width: 130,
 		padding: 10,
 		margin: 10,
 		backgroundColor: colors.three,
+		borderColor: colors.two,
+		borderWidth: 0.4,
 	},
 
 	shadow: {

@@ -11,8 +11,9 @@ export default StyleSheet.create({
 	},
 
 	buttonCard: {
-		flex: 0.1,
+		// flex: 0.1,
 		backgroundColor: "lightblue",
+		margin: 10,
 		width: winWidth-80,
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -22,7 +23,8 @@ export default StyleSheet.create({
 	text: {
 		textAlign: 'center',
 		fontSize: 50,
-		color: 'white'
+		color: 'white',
+		padding: 10
 	},
 
 	shadow: {

@@ -7,7 +7,6 @@ import * as colors from '../../styles/colors';
 
 const CinemasList = function ({ cinemas, onSelect }) {
 	
-	console.log(cinemas);
 	const sort = (arr) => {
 		if (arr !== null){
 			const sortedArr = arr.sort((first, second) => {

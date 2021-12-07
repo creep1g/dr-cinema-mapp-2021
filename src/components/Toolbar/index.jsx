@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TouchableHighlight, Text } from 'react-native';
 import styles from './styles';
 
-const Toolbar = function ( { getCinemas, getMovies, getUpcoming  } ) {
+const Toolbar = function ( { getMovies, getUpcoming  } ) {
 
 	return(
 		<View style={ styles.bar }>
@@ -10,19 +10,10 @@ const Toolbar = function ( { getCinemas, getMovies, getUpcoming  } ) {
 				
 				<TouchableHighlight 
 					underlayColor={ "white" }
-					style={ [ styles.button, styles.shadow ] } 
-					onPress={() => getCinemas()}>
-
-					<Text>Cinemas</Text>
-
-				</TouchableHighlight>
-				
-				<TouchableHighlight 
-					underlayColor={ "white" }
 					style={ [styles.button, styles.shadow]}
 					onPress={() => getMovies()}>
 					
-					<Text>Movies</Text>
+					<Text>In Cinemas Now</Text>
 
 				</TouchableHighlight>
 
