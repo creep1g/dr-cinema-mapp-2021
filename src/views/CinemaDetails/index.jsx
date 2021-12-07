@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableHighlight, Text, FlatList, Linking } from 'react-native';
+import { View, TouchableHighlight, Text, FlatList, Linking, ScrollView } from 'react-native';
 import styles from './styles';
 import body from '../../styles/body';
 import * as colors from '../../styles/colors';
@@ -25,6 +25,18 @@ const CinemaDetails = function ( { route, navigation: { navigate } } ) {
 	  });
 	};
 
+  const openJaWeb = ( street, city ) => {
+   	const url = 'https://ja.is/?q='+street+" "+city 
+	  Linking.canOpenURL(url).then(supported => {
+		  if (supported){
+			  Linking.openURL(url);
+		  }
+		  else{
+			  console.log(url + " Does not work");
+		  }
+	  });
+	};
+
   const openPhoneButton = ( phone ) => {
 	let phoneNumber = phone;
 	if (Platform.OS !== 'android'){
@@ -42,7 +54,7 @@ const CinemaDetails = function ( { route, navigation: { navigate } } ) {
   const url = "http://" + cinema.website;
 
   return(
-	  <View style={ [body.body, { flex:1, flexDirection:'column' }] }>
+	  <ScrollView style={ [body.body, { flex:1 }] }>
 	  <Toolbar />
 		<View style={{ justifyContent:'center', alignItems: 'center'}}>
 			<View style={ [styles.title, styles.shadow, styles.border] }>
@@ -76,8 +88,16 @@ const CinemaDetails = function ( { route, navigation: { navigate } } ) {
 				<Text style={ styles.phoneText }>Phone: { cinema.phone }</Text>
 			</TouchableHighlight>
 
+			<TouchableHighlight
+				activeOpacity={0.4}
+				underlayColor={ 'white' }
+				style={ [ styles.border, styles.shadow, styles.address ] }
+				onPress={() => openJaWeb(cinema["address	"], cinema.city)}>
+				<Text style={ styles.descrText }>{ cinema["address	"] }{"\n"}{ cinema.city }</Text>
+			</TouchableHighlight>
+
 		</View>
-	</View>
+	</ScrollView>
 	)
 };
 

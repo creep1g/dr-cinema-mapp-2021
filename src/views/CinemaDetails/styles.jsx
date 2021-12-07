@@ -87,5 +87,22 @@ export default StyleSheet.create({
 		fontSize: 18,
 		padding: 10,
 		margin: 10
+	},
+	address: {
+		padding: 10,
+		margin: 10,
+		marginBottom:20,
+		marginTop:0,
+		alignItems: 'center',
+		backgroundColor: colors.three,
+		width: winWidth-10
+	},
+
+	phoneText: { 
+		color: colors.four,
+		fontSize: 18,
+		padding: 10,
+		margin: 10
 	}
+
 })
