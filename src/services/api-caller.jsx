@@ -11,7 +11,7 @@ const baseUrl = 'https://api.kvikmyndir.is';
 		};
 		return fetch('https://api.kvikmyndir.is/authenticate/', requestBody)
 			.then( (response) => response.json() )
-			.then( (res) =>  console.log(res.token))
+			.then( (res) =>  {return res.token})
 			.catch( (error) => console.log(error) )
 	};
 

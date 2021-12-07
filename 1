@@ -46,11 +46,19 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 
 
 		<View style={{ flex: 1 }}>
-			<Toolbar 
-				getCinemas={() => getCinemas()}
-				getMovies={() => getMovies()}
-				getUpcoming={() => getMovies()}
-			/>
+
+			<TouchableHighlight onPress={() => getCinemas()}>
+				<Text>Cinemas</Text>
+			</TouchableHighlight>
+
+			<TouchableHighlight onPress={() => getMovies()}>
+				<Text>Movies</Text>
+			</TouchableHighlight>
+
+			<TouchableHighlight onPress={() => getUpcoming()}>
+				<Text>Upcoming</Text>
+			</TouchableHighlight>
+
 			<CinemasList cinemas={cinemas} />
 
 		</View>

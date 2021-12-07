@@ -11,8 +11,8 @@ export default StyleSheet.create ({
 		// borderWidth: 0.5,
 		padding: 10,
 		backgroundColor: colors.highlight,
-		// justifyContent: 'center',
-		// alignItems: 'center',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 
 	shadow: {

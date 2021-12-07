@@ -3,6 +3,7 @@ import { View, TouchableHighlight, Text } from 'react-native';
 import { useSelector} from 'react-redux';
 import MoviesList from '../../components/MoviesList';
 import { getMovieById } from '../../services/api';
+import Toolbar from '../../components/Toolbar';
 
 
 const Movies = function ( {route,  navigation: { navigate } } ) {
@@ -30,6 +31,7 @@ const Movies = function ( {route,  navigation: { navigate } } ) {
 	return(
 
 		<View style={{ flex: 1 }}>
+			<Toolbar />
 			<MoviesList
                 onSelect={(id) => getMovie(id)} 
                 films={movies}/>

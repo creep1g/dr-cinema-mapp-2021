@@ -8,11 +8,6 @@ import reducers from './src/reducers';
 
 export default function App() {
 	
-	const [token, setToken] = useState();
-
-// Get access token !
-
-
 	return (
 		<Provider store={createStore(reducers, applyMiddleware(thunk))}>
 			<View style={{ flex: 1 }}>

@@ -8,11 +8,11 @@ export default StyleSheet.create ({
 		margin: 10,
 		borderRadius: 10,
 		borderColor: colors.purp,
-		// borderWidth: 0.5,
 		padding: 10,
-		backgroundColor: colors.highlight,
-		// justifyContent: 'center',
-		// alignItems: 'center',
+		backgroundColor: colors.three,
+		justifyContent: 'space-between',
+		flexDirection: 'row',
+		alignItems: 'center',
 	},
 
 	shadow: {
@@ -37,7 +37,14 @@ export default StyleSheet.create ({
 	subtext:{ 
 		color: 'black',
 		textAlign: 'center',
-		fontSize: 16
+		fontSize: 12
+	},
+
+	image: {
+		margin: 10,
+		padding: 10,
+		height: 200,
+		width: 140,
 	}
 
 })

@@ -5,6 +5,7 @@ import styles from './styles';
 import {addToken} from '../../actions/tokenActions';
 import { getAllCinemas } from '../../actions/cinemaActions';
 import { getAllMovies, getUpcoming } from '../../actions/moviesActions';
+import * as API from '../../services/api-caller';
 // import PropTypes from 'prop-types';
 // import Toolbar from '../../components/toolbar';
 
@@ -15,23 +16,12 @@ const Front = function( { navigation: {navigate} } )  {
 	
 	useEffect( () => {
 		(async () => {
-			const requestBody = {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ 
-					username: 'Morgaes',
-					password: 'Morgaes1' })
-			};
-			await fetch('https://api.kvikmyndir.is/authenticate/', requestBody)
-				.then( (response) => response.json() )
-				.then( (res) =>  dispatch(addToken(res.token)))
-				.catch( (error) => console.log(error) )
+			API.auth().then((res) => dispatch(addToken(res)))
 			dispatch(getAllCinemas(token))
 			dispatch(getAllMovies(token))
 			dispatch(getUpcoming(token))
 		})();
 	}, []);
-
 
 	return(
 		<View style={ styles.screen }>
