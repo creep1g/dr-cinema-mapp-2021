@@ -9,6 +9,13 @@ const MoviesList = function ({ films, onSelect}) {
 		console.log(item);
 	} 
 	console.log(films);
+
+// 	const genreList = ( list ) =>{ 
+// 		const genres = [];
+// 		list.forEach((genre) => { genres.push(genre.Name) })
+// 		return genres;
+// 	},
+
 	return (
     <View style={{ flex: 1 }}>
 		<FlatList
@@ -44,7 +51,10 @@ const MoviesList = function ({ films, onSelect}) {
 
 					<View style={ { flex:1 } }>
 						<Text style={styles.text}>{item.title}</Text> 
-						<Text style={styles.subtext}>{ item.plot }</Text> 
+						
+						<Text style={styles.subtext}>{ item.year }</Text> 
+
+						<Text style={ styles.subtext }>{ item.genres[0]["NameEN	"] }</Text>
 					</View>
 
         </View>

@@ -4,6 +4,7 @@ import { View, TouchableHighlight, Text, FlatList } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import CinemasList from '../../components/CinemasList';
 import Toolbar from '../../components/Toolbar';
+import { holdCinema } from '../../actions/cinemaDetailsActions';
 import styles from './styles';
 import * as API from '../../services/api';
 import body from '../../styles/body';
@@ -13,19 +14,14 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	
 	const cinemas = useSelector(state => state.cinemas);
 	const movies = useSelector(state => state.movies);
-	const token = useSelector(state => state.token);
 	const upcoming = useSelector(state => state.upcoming);
 	const dispatch = useDispatch()
 	//const token = route.params.token;
 
-
-	const sort = (arr) => {
-		const sortedArr = arr.sort((first, second) => {
-			return first.name.toUpperCase() > second.name.toUpperCase() ? 1 : -1;
-		});
-
-		return sortedArr;
-	};
+	const onClick = async ( cinema ) => {
+		dispatch(holdCinema(cinema));
+		navigate("CinemaDetails");
+	}
 
 	const getCinemas = async () => {
 		console.log(cinemas)
@@ -51,8 +47,7 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 				getMovies={() => getMovies()}
 				getUpcoming={() => getMovies()}
 			/>
-			<CinemasList cinemas={cinemas} />
-
+			<CinemasList cinemas={cinemas} onSelect={(id) => navigate("CinemaDetails", { cinema: id })}  />
 		</View>
 			
 	)

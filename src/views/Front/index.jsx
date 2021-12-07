@@ -29,7 +29,7 @@ const Front = function( { navigation: {navigate} } )  {
 				style={[styles.buttonCard, styles.shadow]}
 				activeOpacity={ 0.6 }
 				underlayColor={ 'teal' }
-				onPress={() => navigate("Cinemas", { token: token })}
+				onPress={() => navigate("Cinemas")}
 			>
 				<Text style={styles.text}>Cinemas</Text>
 			</TouchableHighlight>
@@ -37,7 +37,7 @@ const Front = function( { navigation: {navigate} } )  {
 				style={[styles.buttonCard, styles.shadow]}
 				activeOpacity={ 0.6 }
 				underlayColor={ 'teal' }
-				onPress={() => navigate("Movies", { token: token })}
+				onPress={() => navigate("Movies",{ token: token })}
 			>
 				<Text style={styles.text}>Movies</Text>
 			</TouchableHighlight>
