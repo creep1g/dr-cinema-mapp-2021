@@ -100,9 +100,10 @@ export default StyleSheet.create({
 		width: winWidth-10
 	},
 
-	phoneText: { 
+
+	addressText: { 
 		textAlign: 'center',
-		color: colors.four,
+		color: 'black',
 		fontSize: 18,
 		padding: 10,
 		margin: 10

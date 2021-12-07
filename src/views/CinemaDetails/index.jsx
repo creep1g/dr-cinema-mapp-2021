@@ -94,7 +94,7 @@ const CinemaDetails = function ( { route, navigation: { navigate } } ) {
 				underlayColor={ 'white' }
 				style={ [ styles.border, styles.shadow, styles.address ] }
 				onPress={() => openJaWeb(cinema["address	"], cinema.city)}>
-				<Text style={ styles.descrText }>{ cinema["address	"] }{"\n"}{ cinema.city }</Text>
+				<Text style={ styles.addressText }>{ cinema["address	"] }{"\n"}{ cinema.city }</Text>
 			</TouchableHighlight>
 
 		</View>
