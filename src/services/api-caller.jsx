@@ -36,7 +36,7 @@ const baseUrl = 'https://api.kvikmyndir.is';
 			},
 		};
 
-		fetch('https://api.kvikmyndir.is/movies', requestBody)
+		await fetch('https://api.kvikmyndir.is/movies', requestBody)
 			.then( (response) => response.json() )
 			.then( (res) => {return res} )
 			.catch( (error) => console.log(error) )
