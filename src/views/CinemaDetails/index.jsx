@@ -52,7 +52,8 @@ const CinemaDetails = function ( { route, navigation: { navigate } } ) {
 };
 	
   const url = "http://" + cinema.website;
-
+  const regex = /(<([^>]+)>)/ig;
+  
   return(
 	  <ScrollView style={ [body.body, { flex:1 }] }>
 	  <Toolbar />
@@ -65,7 +66,7 @@ const CinemaDetails = function ( { route, navigation: { navigate } } ) {
 			  cinema.description !== null
 			  ?
 			  <View style={ [ styles.border, styles.shadow, styles.description] }>
-				 <Text style={ styles.descrText }> { cinema.description } </Text>
+				  <Text style={ styles.descrText }> { cinema.description.replace(regex, '\n') } </Text>
 			  </View>
 			  :
 			  <></>

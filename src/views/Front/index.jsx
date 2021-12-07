@@ -16,10 +16,10 @@ const Front = function( { navigation: {navigate} } )  {
 	
 	useEffect( () => {
 		(async () => {
-			API.auth().then((res) => dispatch(addToken(res)))
+			await API.auth().then((res) => dispatch(addToken(res)))
 			dispatch(getAllCinemas(token))
 			dispatch(getAllMovies(token))
-			dispatch(getUpcoming(token))
+		 	dispatch(getUpcoming(token))
 		})();
 	}, []);
 
