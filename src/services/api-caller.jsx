@@ -9,7 +9,7 @@ const baseUrl = 'https://api.kvikmyndir.is';
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username: 'Morgaes', password: 'Morgaes1' })
 		};
-		fetch('https://api.kvikmyndir.is/authenticate/', requestBody)
+		return fetch('https://api.kvikmyndir.is/authenticate/', requestBody)
 			.then( (response) => response.json() )
 			.then( (res) =>  console.log(res.token))
 			.catch( (error) => console.log(error) )
@@ -22,7 +22,7 @@ const baseUrl = 'https://api.kvikmyndir.is';
 								 "Content-Type": "application/json"
 			},
 		};
-		fetch('https://api.kvikmyndir.is/upcoming', requestBody)
+		return fetch('https://api.kvikmyndir.is/upcoming', requestBody)
 			.then( (response) => response.json() )
 			.then( (res) => upComing = res)
 			.catch( (error) => console.log(error) )
@@ -52,8 +52,8 @@ const baseUrl = 'https://api.kvikmyndir.is';
 			},
 		};
 
-		fetch('https://api.kvikmyndir.is/theaters', requestBody)
+		return fetch('https://api.kvikmyndir.is/theaters', requestBody)
 			.then( (response) => response.json() )
-			.then( (res) => console.log(res) )
+			.then( (res) => {return res} )
 			.catch( (error) => console.log(error) )
 		};
