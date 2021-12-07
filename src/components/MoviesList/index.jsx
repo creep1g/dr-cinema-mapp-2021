@@ -54,7 +54,17 @@ const MoviesList = function ({ films, onSelect}) {
 						
 						<Text style={styles.subtext}>{ item.year }</Text> 
 
-						<Text style={ styles.subtext }>{ item.genres[0]["NameEN	"] }</Text>
+						<FlatList
+							numColumns={4}
+							data={ item.genres }
+							renderItem={({ item }) => (
+								<View style={ { marginTop: 15, alignItems: 'center', justifyContent: 'center', flex: 1, flexDirection: 'row' } }>
+									<Text style={styles.subtext}>{ item["NameEN	"] }</Text>
+								</View>
+							)}
+							keyExtractor={genre => genre.id}
+						/>
+
 					</View>
 
         </View>
