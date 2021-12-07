@@ -9,23 +9,24 @@ const baseUrl = 'https://api.kvikmyndir.is';
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ username: 'Morgaes', password: 'Morgaes1' })
 		};
-		return fetch('https://api.kvikmyndir.is/authenticate/', requestBody)
+		fetch('https://api.kvikmyndir.is/authenticate/', requestBody)
 			.then( (response) => response.json() )
 			.then( (res) =>  console.log(res.token))
 			.catch( (error) => console.log(error) )
 	};
 
-	export const getUpComing = async (token) => {
+	export const getUpcoming = async (token) => {
 		const requestBody = {
 			method: 'GET',
 			headers: { "x-access-token": token, 
 								 "Content-Type": "application/json"
 			},
 		};
-		return fetch('https://api.kvikmyndir.is/upcoming', requestBody)
+		const upcoming = await fetch('https://api.kvikmyndir.is/upcoming', requestBody)
 			.then( (response) => response.json() )
-			.then( (res) => upComing = res)
+			//.then( (res) => upComing = res)
 			.catch( (error) => console.log(error) )
+		return upcoming;
 	};
 
 	export const getMovies = async (token) => {
@@ -36,13 +37,12 @@ const baseUrl = 'https://api.kvikmyndir.is';
 			},
 		};
 
-		await fetch('https://api.kvikmyndir.is/movies', requestBody)
+		const movies = await fetch('https://api.kvikmyndir.is/movies', requestBody)
 			.then( (response) => response.json() )
-			.then( (res) => {return res} )
 			.catch( (error) => console.log(error) )
+
+		return movies;
 		};
-
-
 
 	export const getCinemas = async (token) => {
 		const requestBody = {
@@ -52,8 +52,26 @@ const baseUrl = 'https://api.kvikmyndir.is';
 			},
 		};
 
-		return fetch('https://api.kvikmyndir.is/theaters', requestBody)
-			.then( (response) => response.json() )
-			.then( (res) => {return res} )
+		const data = await fetch('https://api.kvikmyndir.is/theaters', requestBody)
+			.then( response => response.json())
 			.catch( (error) => console.log(error) )
+		return data;
 		};
+
+	export const getMovieById = async (token, id) => {
+		const requestBody = {
+			method: 'GET',
+			headers: { "x-access-token": token, 
+								 "Content-Type": "application/json"
+			},
+		};
+
+		const data = await fetch(`https://api.kvikmyndir.is/movies?imdbid=${id}`, requestBody)
+			.then( response => response.json())
+			.catch( (error) => console.log(error) )
+		return data;
+		};
+
+	
+	
+		
