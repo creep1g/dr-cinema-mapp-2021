@@ -54,6 +54,7 @@ const baseUrl = 'https://api.kvikmyndir.is';
 
 		fetch('https://api.kvikmyndir.is/theaters', requestBody)
 			.then( (response) => response.json() )
+			.then((response) => console.log(response.json()))
 			.then( (res) => console.log(res) )
 			.catch( (error) => console.log(error) )
 		};
