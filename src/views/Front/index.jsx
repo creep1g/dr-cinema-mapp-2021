@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, TouchableHighlight, Text } from 'react-native';
 import styles from './styles';
-import * as API from '../../services/api-caller';
-import { useDispatch } from 'react-redux';
-import { getAllCinemas } from '../../actions/cinemaActions';
 // import PropTypes from 'prop-types';
 // import Toolbar from '../../components/toolbar';
 
 const Front = function( { navigation: {navigate} } )  {
 
 	const [token, setToken] = useState();
-	const dispatch = useDispatch();
 
 	useEffect( () => {
 		(async () => {
@@ -25,7 +21,6 @@ const Front = function( { navigation: {navigate} } )  {
 				.then( (response) => response.json() )
 				.then( (res) =>  setToken(res.token))
 				.catch( (error) => console.log(error) )
-			dispatch(getAllCinemas)
 		})();
 	}, []);
 	

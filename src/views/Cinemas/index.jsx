@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { View, TouchableHighlight, Text } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './styles';
 import { getAllCinemas } from '../../actions/cinemaActions';
 import * as API from '../../services/api-caller';
+
 
 const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	
 	//const [ cinemas, setCinemas ] = useState([])
 	const [ movies, setMovies ] = useState([]);
 	const cinemas = useSelector(state => state.cinemas)
-	
+	const dispatch = useDispatch()
 	const token = route.params.token;
 
 	useEffect( () => {
@@ -20,9 +21,13 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 			setMovies(API.getMovies(token));
 			console.log(movies);
 			*/
-			console.log(cinemas);
+			dispatch(getAllCinemas(token))
 		})();
 	}, []);
+
+	const test = () => {
+		console.log(cinemas);
+	}
 	
 	
 
@@ -30,6 +35,9 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 
 		<View style={{ flex: 1 }}>
 			<Text> Smárabíó </Text>
+			<TouchableHighlight onPress={() => test()}>
+				<Text>Test button</Text>
+			</TouchableHighlight>
 		</View>
 			
 	)
