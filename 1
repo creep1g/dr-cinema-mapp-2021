@@ -18,7 +18,7 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	const dispatch = useDispatch()
 	//const token = route.params.token;
 
-	const onClick = async ( cinema ) => {
+	const onClick =  async ( cinema ) => {
 		dispatch(holdCinema(cinema));
 		navigate("CinemaDetails");
 	}
@@ -47,7 +47,7 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 				getMovies={() => getMovies()}
 				getUpcoming={() => getMovies()}
 			/>
-			<CinemasList cinemas={cinemas} onSelect={(id) => navigate("CinemaDetails", { cinema: id })}  />
+			<CinemasList cinemas={cinemas} onSelect={(id) => onClick(id)}  />
 		</View>
 			
 	)

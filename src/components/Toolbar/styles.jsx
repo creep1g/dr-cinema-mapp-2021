@@ -2,17 +2,23 @@ import { StyleSheet } from 'react-native';
 import * as colors from '../../styles/colors';
 
 export default StyleSheet.create ({
+	bar: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: colors.one,
+		flexDirection: 'row',
+	},
 
-	card: {
-		flex: 1,
-		margin: 10,
-		borderRadius: 10,
-		borderColor: colors.purp,
-		// borderWidth: 0.5,
+	buttonArray: {
+		flexDirection: 'row',
+	},
+
+	button: {
+		alignItems: 'center',
+		width: 120,
 		padding: 10,
-		backgroundColor: colors.highlight,
-		// justifyContent: 'center',
-		// alignItems: 'center',
+		margin: 10,
+		backgroundColor: colors.three,
 	},
 
 	shadow: {
@@ -28,16 +34,7 @@ export default StyleSheet.create ({
 		elevation: 8,
 	},
 
-	text: {
-		color: "black",
-		textAlign: 'center',
-		fontSize: 25,
-	},
 
-	subtext:{ 
-		color: 'black',
-		textAlign: 'center',
-		fontSize: 16
-	}
+
 
 })
