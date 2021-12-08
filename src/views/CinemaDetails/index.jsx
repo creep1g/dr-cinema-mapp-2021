@@ -5,6 +5,7 @@ import body from '../../styles/body';
 import Toolbar from '../../components/Toolbar';
 import {useDispatch, useSelector} from 'react-redux';
 import { getMoviesByCinema } from '../../actions/moviesActions';
+import MoviesList from '../../components/MoviesList';
 
 const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 	// This should be done with redux but i can't figure it out!
@@ -57,14 +58,18 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 	
   const url = "http://" + cinema.website;
   const regex = /(<([^>]+)>)/ig;
-
+	
   return(
-	  <ScrollView style={ [body.body, { flex:1 }] }>
+	  <View style={ [body.body, { flex:1 }] }>
 		<Toolbar 
 		getMovies={() => navigate("Movies", { cinemaId: cinema.id })} 
 		getUpcoming={() => navigate('Upcoming')}
 		/>
-		<View style={{ justifyContent:'center', alignItems: 'center'}}>
+		<FlatList
+			numColumns={1}
+			data={[0]}
+			renderItem={({ item }) => (
+		<View>
 			<View style={ [styles.title, styles.shadow, styles.border] }>
 			  <Text style={ styles.titleText }> { cinema.name } </Text>
 			</View>
@@ -103,9 +108,13 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 				onPress={() => openJaWeb(cinema["address	"], cinema.city)}>
 				<Text style={ styles.addressText }>{ cinema["address	"] }{"\n"}{ cinema.city }</Text>
 			</TouchableHighlight>
-			
+			<MoviesList upcoming='false' 
+			onSelect={() => console.log()} />	
 		</View>
-	</ScrollView>
+			)
+		}
+		keyExtractor={(cinema) => cinema.id}/>
+	</View>
 	)
 };
 

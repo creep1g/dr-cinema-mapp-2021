@@ -5,8 +5,9 @@ import { AntDesign } from '@expo/vector-icons';
 import styles from './styles';
 import Genres from '../Genres';
 import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
 
-const MoviesList = function ({ films, onSelect, upcoming}) {
+const MoviesList = function ({ onSelect, upcoming}) {
 	
 	
 	const isDisabled = (item) => {
@@ -18,7 +19,7 @@ const MoviesList = function ({ films, onSelect, upcoming}) {
 		return false;
 	}
 	
-
+	const films = useSelector(state => state.movies);
 	return (
     <View style={{ flex: 1 }}>
 		<FlatList
