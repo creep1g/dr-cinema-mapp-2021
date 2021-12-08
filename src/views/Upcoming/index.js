@@ -22,13 +22,13 @@ const Upcoming = function ( {route,  navigation: { navigate } } ) {;
 		navigate('Youtube', {videoId: item.trailers[0].results[0].key})
 	}
 
-	upcoming.sort((a,b) => b['release-dateIS'] < a['release-dateIS'] ? 1 : -1)
+	upcoming.sort((a,b) => a['release-dateIS'] > b['release-dateIS'] ? 1 : -1)
 
 	return(
 		<View style={{ flex: 1 }}>
 			<MoviesList
 				onSelect={(item) => onPressMovie(item)}
-                films={upcoming}
+                films={ upcoming }
                 upcoming={true}
                 />
 		</View>
