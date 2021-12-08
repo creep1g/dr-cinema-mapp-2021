@@ -23,7 +23,8 @@ const MoviesList = function ({ films, onSelect}) {
       data={films}
       renderItem={({ item }) => (
 				<TouchableHighlight
-					onPress={() => prant( item.showtimes )}>
+					onPress={() => onSelect(item)}>
+					{/*onPress={() => prant( item.showtimes )} */}
 					<View style={styles.card}>
 {/* 					// There are inconsitencies with the data */}
 {/* 					// Some movies have omdb as property but it is an empty array */}

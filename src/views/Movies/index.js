@@ -19,13 +19,6 @@ const Movies = function ( {route,  navigation: { navigate } } ) {
 
 		})();
 	}, []);
-
-    const getMovie = async (id) => {
-		//console.log(`id: ${id}`)
-		const movie = await getMovieById(token, id);
-        //console.log(movie)
-		navigate('Movie', {movie: movie})
-    }
 	
 
 	return(
@@ -33,7 +26,7 @@ const Movies = function ( {route,  navigation: { navigate } } ) {
 		<View style={{ flex: 1 }}>
 			<Toolbar />
 			<MoviesList
-                onSelect={(id) => getMovie(id)} 
+                onSelect={(item) => navigate('Movie', {movie: item})} 
                 films={movies}/>
 		</View>
 			

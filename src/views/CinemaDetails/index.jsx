@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableHighlight, Text, FlatList, Linking, ScrollView } from 'react-native';
+import { View, TouchableHighlight, Text, SafeAreaView, Linking, ScrollView } from 'react-native';
 import styles from './styles';
 import body from '../../styles/body';
 import * as colors from '../../styles/colors';
@@ -7,6 +7,7 @@ import * as API from '../../services/api-caller';
 import Toolbar from '../../components/Toolbar';
 import {useSelector} from 'react-redux';
 import WebView from 'react-native-webview';
+import MoviesList from '../../components/MoviesList';
 
 const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 	// This should be done with redux but i can't figure it out!
@@ -21,7 +22,6 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 
   const getMovies = ( cinema ) => { 
 	const filteredMovies = [];
-	
 	for (let i = 0; i < movies.length; i++){
 	  for (let j = 0; j < movies[i].showtimes.length; j++){
 		  if (movies[i].showtimes[j].cinema.id === cinema){
@@ -30,7 +30,8 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 	  };
 	};
 	// This should navigate to Movie list and set movies to filtered movies.
-	navigate("Movies") 
+	//navigate("Movies") 
+	//return filteredMovies;
   }
   
   const openUrlButton = (url) => {
@@ -90,7 +91,6 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 			  :
 			  <></>
 			}
-
 			<TouchableHighlight 
 			  activeOpacity={0.4}
 			  underlayColor={ 'white' }
@@ -117,6 +117,9 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 			</TouchableHighlight>
 
 		</View>
+		<SafeAreaView style={{flex: 1}}>
+		<MoviesList films={getMovies()} />
+		</SafeAreaView>
 	</ScrollView>
 	)
 };

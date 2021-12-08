@@ -3,10 +3,11 @@ import { View, FlatList, Text, Image } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import styles from './styles';
 import body from '../../styles/body';
+import { useSelector } from 'react-redux';
 import * as colors from '../../styles/colors';
 
-const CinemasList = function ({ cinemas, onSelect }) {
-	
+const CinemasList = function ({ cinema, onSelect }) {
+	const cinemas = useSelector(state => state.cinemas)
 	const sort = (arr) => {
 		if (arr !== null){
 			const sortedArr = arr.sort((first, second) => {

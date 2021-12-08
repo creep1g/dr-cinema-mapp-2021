@@ -37,11 +37,9 @@ const baseUrl = 'https://api.kvikmyndir.is';
 			},
 		};
 
-		const movies = await fetch('https://api.kvikmyndir.is/movies', requestBody)
+		return await fetch('https://api.kvikmyndir.is/movies', requestBody)
 			.then( (response) => response.json() )
 			.catch( (error) => console.log(error) )
-
-		return movies;
 		};
 
 	export const getCinemas = async (token) => {
