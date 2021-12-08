@@ -55,12 +55,12 @@ export const getMovieById = (token, id) => {
 	}
 }
 
-export const setCurrentUpcoming = (upcoming) => {
+export const selectedMovie = (movie) => {
 	return async dispatch => {
 		try {
-			dispatch(setCurrentUpcomingSuccess(upcoming));
+			dispatch(selectedMovieSuccess(movie))
 		} catch (err) {
-			console.log(`Error in setCurrentUpcoming ${err}`)
+			console.log(`Error in selectedMovie ${err}`)
 		}
 	}
 }
@@ -81,7 +81,7 @@ const getUpcomingSuccess = upcoming => ({
     payload: upcoming
 })
 
-const setCurrentUpcomingSuccess = upcoming => ({
-	type: constants.CURRENT_UPCOMING,
-	payload: upcoming
+const selectedMovieSuccess = movie => ({
+	type: constants.MOVIE,
+	payload: movie
 })

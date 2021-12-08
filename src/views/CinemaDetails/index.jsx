@@ -9,7 +9,7 @@ import { getMoviesByCinema } from '../../actions/moviesActions';
 const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 	// This should be done with redux but i can't figure it out!
 	const dispatch = useDispatch();
-	const { cinema } = route.params;
+	const cinema  = useSelector(state => state.cinema)
 	const token = useSelector(state => state.token);
 
 	useEffect(() => {
@@ -57,10 +57,7 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 	
   const url = "http://" + cinema.website;
   const regex = /(<([^>]+)>)/ig;
-  
-	const movieView = () => {
-		r
-	};
+
   return(
 	  <ScrollView style={ [body.body, { flex:1 }] }>
 		<Toolbar 

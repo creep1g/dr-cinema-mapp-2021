@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import CinemasList from '../../components/CinemasList';
 import Toolbar from '../../components/Toolbar';
 import { getAllCinemas } from '../../actions/cinemaActions';
-import { getUpcoming } from '../../actions/moviesActions';
-import { holdCinema } from '../../actions/cinemaDetailsActions';
+import { selectedCinema } from '../../actions/cinemaActions';
+
 
 const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	
@@ -27,7 +27,8 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	// console.log(cinemas);	
 
 	const onClick = ( cinema ) => {
-		navigate("CinemaDetails", { cinema: cinema });
+		dispatch(selectedCinema(cinema))
+		navigate("CinemaDetails");
 	};
 
 	return(
@@ -39,7 +40,7 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 				getMovies={() => getMovies()}
 				getUpcoming={() => navigate('Upcoming')}
 			/>
-			<CinemasList cinemas={cinemas} onSelect={(id) => onClick(id)}  />
+			<CinemasList cinemas={cinemas} onSelect={(item) => onClick(item)}  />
 		</View>
 			
 	)

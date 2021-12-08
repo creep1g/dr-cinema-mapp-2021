@@ -2,20 +2,20 @@ import React, { useEffect } from 'react';
 import { View, TouchableHighlight, Text } from 'react-native';
 import { useSelector} from 'react-redux';
 import MoviesList from '../../components/MoviesList';
-import { getMovieById } from '../../services/api';
 import Toolbar from '../../components/Toolbar';
 import {useDispatch} from 'react-redux';
+import { selectedMovie } from '../../actions/moviesActions';
 
 
 const Movies = function ( {route,  navigation: { navigate } } ) {
-	const { cinemaId } = route.params;
 	const movies = useSelector(state => state.movies);
-    
 	const token = useSelector(state => state.token);
+	const dispatch = useDispatch()
 	
 	// This should be handled with redux.. i think?
-	const onPressMovie = (id) => {
-		navigate("Movie", { movie: id, cinemaId: cinemaId })
+	const onPressMovie = (movie) => {
+		dispatch(selectedMovie(movie))
+		navigate("Movie")
 	}
 
 	return(
@@ -24,7 +24,7 @@ const Movies = function ( {route,  navigation: { navigate } } ) {
 			getUpcoming={() => navigate('Upcoming')}
 			/>
 			<MoviesList
-				onSelect={(id) => onPressMovie(id)} 
+				onSelect={(movie) => onPressMovie(movie)} 
                 films={movies}/>
 		</View>
 	)
