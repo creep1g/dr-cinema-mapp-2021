@@ -11,9 +11,9 @@ const MoviesList = function ({ films, onSelect, upcoming}) {
 	
 	const isDisabled = (item) => {
 		if (upcoming) {
-			if (item.trailers.length === 0){
+			if (item.trailers.length === 0 || (item.trailers.length > 0 && item.trailers[0].results.length === 0)){
 				return true;
-			}
+			} 
 		} 
 		return false;
 	}
