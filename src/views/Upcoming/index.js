@@ -4,9 +4,10 @@ import { useSelector} from 'react-redux';
 import MoviesList from '../../components/MoviesList';
 import { getMovieById } from '../../services/api';
 import Toolbar from '../../components/Toolbar';
+import { testElement } from 'domutils';
 
 
-const Movies = function ( {route,  navigation: { navigate } } ) {
+const Upcoming = function ( {route,  navigation: { navigate } } ) {
 	
 	const upcoming = useSelector(state => state.upcoming);
     
@@ -19,6 +20,10 @@ const Movies = function ( {route,  navigation: { navigate } } ) {
 
 		})();
 	}, []);
+
+    const test = () => {
+        console.log(upcoming)
+    }
 	
 
 	return(
@@ -28,6 +33,9 @@ const Movies = function ( {route,  navigation: { navigate } } ) {
 				getMovies={() => navigate('Movies')}
 				getUpcoming={() => navigate('Upcoming')}
 			/>
+            <TouchableHighlight onPress={() => test()}>
+                <Text>Test</Text>
+            </TouchableHighlight>
 			<MoviesList
                 onSelect={(item) => navigate('Movie', {movie: item})} 
                 films={upcoming}/>
@@ -36,4 +44,4 @@ const Movies = function ( {route,  navigation: { navigate } } ) {
 	)
 }
 
-export default Movies;
+export default Upcoming;

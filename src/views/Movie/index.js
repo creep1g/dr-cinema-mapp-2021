@@ -10,6 +10,7 @@ const Movie = function ( {route,  navigation: { navigate } } ) {
     const movie = route.params.movie
 	const token = useSelector(state => state.token);
 	const movies = useSelector(state => state.movies)
+	const cinemas = useSelector(state => state.cinemas)
 
 	//const token = route.params.token;
 
@@ -19,10 +20,20 @@ const Movie = function ( {route,  navigation: { navigate } } ) {
 	}, []);
 
 	const test = async () => {
-		for (var i = 0; i < movies.length; i++) {
-			console.log(movies[i].title)
+		var library = []
+		for (var i = 0; i < cinemas.length; i++) {
+			const moviess = []
+			for (var j = 0; j < movies.length; j++) {
+				for (var k = 0; k < movies[j].showtimes.length; k++) {
+					if (movies[j].showtimes[k].cinema.id === cinemas[i].id) {
+						moviess.push(movies[j].title)
+					}
+				}
+			}
+			library.push(moviess)
 		}
-		console.log(JSON.stringify(movies))
+		console.log(library)
+		
 	}
 
 	const getGenres = () => movie.genres.map((genre) => genre.Name)
@@ -31,6 +42,10 @@ const Movie = function ( {route,  navigation: { navigate } } ) {
 	return(
 
 		<View style={{ flex: 1 }}>
+			<Toolbar 
+				getMovies={() => navigate('Movies')}
+				getUpcoming={() => navigate('Upcoming')}
+			/>
 			<TouchableHighlight onPress={() => test()}>
 				<Text>test</Text>
 			</TouchableHighlight>

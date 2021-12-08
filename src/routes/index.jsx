@@ -7,6 +7,7 @@ import Cinemas from '../views/Cinemas';
 import Movies from '../views/Movies';
 import Movie from '../views/Movie';
 import CinemaDetails from '../views/CinemaDetails';
+import Upcoming from '../views/Upcoming';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const Routes = function () {
 		<Stack.Screen options={{ headerStatusBarHeight: 30, headerStyle: styles.header, headerTintColor:'#fff'}}  name="Movies" component={Movies} />
 		<Stack.Screen options={{ headerStatusBarHeight: 30, headerStyle: styles.header, headerTintColor:'#fff'}}  name="Movie" component={Movie} />
 		<Stack.Screen options={{ headerStatusBarHeight: 30, headerStyle: styles.header, headerTintColor:'#fff'}}  name="CinemaDetails" component={CinemaDetails} />
+    <Stack.Screen options={{ headerStatusBarHeight: 30, headerStyle: styles.header, headerTintColor:'#fff'}}  name="Upcoming" component={Upcoming} />
       </Stack.Navigator>
     </NavigationContainer>
   );

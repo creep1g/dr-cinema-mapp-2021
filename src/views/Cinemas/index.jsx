@@ -43,9 +43,8 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 
 		<View style={{ flex: 1 }}>
 			<Toolbar 
-				getCinemas={() => getCinemas()}
-				getMovies={() => getMovies()}
-				getUpcoming={() => getMovies()}
+				getMovies={() => navigate('Movies')}
+				getUpcoming={() => navigate('Upcoming')}
 			/>
 			<CinemasList cinemas={cinemas} onSelect={(id) => navigate("CinemaDetails", { cinema: id })}  />
 		</View>

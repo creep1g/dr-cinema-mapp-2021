@@ -37,13 +37,7 @@ export const getMovies = async (token) => {
 	};
 
 	return await fetch(baseUrl+'/movies', requestBody)
-		.then( (response) => response.text() )
-		.then(response => {
-			console.log(response);
-			const s = JSON.parse(response)
-			console.log(s)
-			return s
-		})
+		.then( (response) => response.json() )
 		//.then( (res) => {return res} )
 		.catch( (error) => console.log(error) )
 	};
@@ -58,7 +52,7 @@ export const getCinemas = async (token) => {
 		},
 	};
 
-	return fetch(baseUrl+'/theaters', requestBody)
+	return await fetch(baseUrl+'/theaters', requestBody)
 		.then( (response) => response.json() )
 		.then( (res) => {return res} )
 		.catch( (error) => console.log(error) )
@@ -72,7 +66,7 @@ export const getMovieByMongoid = async (token, mongoid) =>{
 		},
 	};
 
-	return fetch(baseUrl+'/movies?mongoid='+mongoid, requestBody)
+	return await fetch(baseUrl+'/movies?mongoid='+mongoid, requestBody)
 		.then( (response) => response.json() )
 		.then( (res) => {return res} )
 		.catch( (error) => console.log(error) )

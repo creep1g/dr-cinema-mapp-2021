@@ -75,8 +75,12 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
   const regex = /(<([^>]+)>)/ig;
   
   return(
+	  
 	  <ScrollView style={ [body.body, { flex:1 }] }>
-		<Toolbar getMovies={() => getMovies(cinema.id)} />
+		<Toolbar 
+				getMovies={() => navigate('Movies')}
+				getUpcoming={() => navigate('Upcoming')}
+		/>
 		<View style={{ justifyContent:'center', alignItems: 'center'}}>
 			<View style={ [styles.title, styles.shadow, styles.border] }>
 			  <Text style={ styles.titleText }> { cinema.name } </Text>
@@ -117,10 +121,8 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 			</TouchableHighlight>
 
 		</View>
-		<SafeAreaView style={{flex: 1}}>
-		<MoviesList films={getMovies()} />
-		</SafeAreaView>
 	</ScrollView>
+	
 	)
 };
 
