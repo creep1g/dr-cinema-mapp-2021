@@ -3,8 +3,8 @@ import { View,  Text, } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import CinemasList from '../../components/CinemasList';
 import Toolbar from '../../components/Toolbar';
-import { getAllCinemas } from '../../actions/cinemaActions';
-import { selectedCinema } from '../../actions/cinemaActions';
+import { getAllCinemas, selectedCinema } from '../../actions/cinemaActions';
+import { getUpcoming } from '../../actions/moviesActions';
 
 
 const Cinemas = function ( {route,  navigation: { navigate } } ) {
@@ -22,7 +22,6 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	}, []);
 
 	const upcoming = useSelector(state => state.upcoming);
-	console.log(upcoming);
 	const cinemas = useSelector(state => state.cinemas);
 	// console.log(cinemas);	
 
