@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {Linking} from 'react-native';
 import { FlatList, View, TouchableHighlight, Text, Image, Pressable, ScrollView } from 'react-native';
 import { useSelector} from 'react-redux';
 import styles from './styles';
@@ -28,65 +29,73 @@ const Movie = function ( {route,  navigation: { navigate } } ) {
 		}
 			return showtimes;
 	}
-	console.log(movie);	
+	//console.log(movie);	
 	const showtimes = getShowTimes();
+
+	const openLink = (url) => {
+		Linking.openURL(url)
+	}
+
+	const test = () => {
+		console.log(showtimes[0])
+	}
 
 	return(
 
-		<View style={{ flex: 1  }}>
-			{/* title */}
-			<View style={{alignItems: 'center'}}>
-				<Text>{ movie.title }</Text>
-				<Text>{ movie.year }</Text>
-			</View>
-			{/* poster */}
-			<View style={{ alignItems: 'center'}}>
-				{
-				movie.omdb.length !== 0
-				?
-				// If omdb is populated use it
-				<Image 
-					style={styles.image}
-					source={{uri: movie.omdb[0].Poster }} 
-					/>
-					:
-					// Else use poster
-					<Image
-						style={[ styles.image, ]}
-						source={{uri: movie.poster}}
-					/>
-					}
-			</View>
-			{/* Plot */}
-			<View style={{ alignItems: 'center'}}>
-				<Text>{ movie.plot }</Text>
-			</View>
-			{/* duration */}
-			<View style={{ alignItems: 'center'}}>
-				<Text>{ movie.durationMinutes } Minutes</Text>
-			</View>
-			{/* Year of release */}
-			<View >
-				<Genres genres={ movie.genres } />
-			</View>
-			{/* ShowTimes! */}	
-			<View style={{alignItems: 'center'}}>
-				<FlatList
-					numColumns={1}
-					data={showtimes}
-					renderItem={({item}) => (
-							<Pressable
-								style={styles.button}
-								onPress={() => console.log(item.purchase_url)}>
-								<Text style={ styles.buttonText }>Time: {item.time}</Text>
-								<Text style={ styles.buttonText }>Buy Ticket</Text>
-							</Pressable>
-					)}
-					keyExtractor={(item) => item.purchase_url}
-			/>
-			</View>
-		</View>
-			
+		<FlatList
+				ListHeaderComponent={
+				<>
+					<View style={{alignItems: 'center'}}>
+						<Text>{ movie.title }</Text>
+						<Text>{ movie.year }</Text>
+					</View>
+					{/* poster */}
+					<View style={{ alignItems: 'center'}}>
+						{
+						movie.omdb.length !== 0
+						?
+						// If omdb is populated use it
+						<Image 
+							style={styles.image}
+							source={{uri: movie.omdb[0].Poster }} 
+							/>
+							:
+							// Else use poster
+							<Image
+								style={[ styles.image, ]}
+								source={{uri: movie.poster}}
+							/>
+							}
+					</View>
+					{/* Plot */}
+					<View style={{ alignItems: 'center'}}>
+						<Text>{ movie.plot }</Text>
+					</View>
+					{/* duration */}
+					<View style={{ alignItems: 'center'}}>
+						<Text>{ movie.durationMinutes } Minutes</Text>
+					</View>
+					{/* Year of release */}
+					<View >
+						<Genres genres={ movie.genres } />
+					</View>		
+					<TouchableHighlight onPress={() => test()}>
+						<Text>Test</Text>
+					</TouchableHighlight>
+				</>}
+				numColumns={1}
+				data={showtimes}
+				renderItem={({item}) => (
+						<Pressable
+							style={styles.button}
+							onPress={() => openLink(item.purchase_url)}>
+							<Text style={ styles.buttonText }>Time: {item.time}</Text>
+							<Text style={ styles.buttonText }>Buy Ticket</Text>
+						</Pressable>
+				)}
+				keyExtractor={(item) => item.purchase_url}
+		/>
+
 	)
 }
 
