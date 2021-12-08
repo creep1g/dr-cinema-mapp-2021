@@ -17,7 +17,7 @@ export const getAllCinemas = (token) => {
 
         } catch (err) {
             // TODO: dispatch some error
-            console.log(err);
+            console.log(`error in cinemaActions: ${err}`);
             // console.log('error in cinemaAction')
         }
     };
