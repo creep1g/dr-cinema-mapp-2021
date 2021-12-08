@@ -65,11 +65,10 @@ const baseUrl = 'https://api.kvikmyndir.is';
 								 "Content-Type": "application/json"
 			},
 		};
-
-		const data = await fetch(`https://api.kvikmyndir.is/movies?imdbid=${id}`, requestBody)
-			.then( response => response.json())
-			.catch( (error) => console.log(error) )
-		return data;
+			const movie = await fetch(baseUrl+"/movies", requestBody)
+				.then( (response) => response.json() )
+				.catch( (err) => console.log(err) )
+			return(movie.filter((movie) => movie.id === id));
 		};
 
 	

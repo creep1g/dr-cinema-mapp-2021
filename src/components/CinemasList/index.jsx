@@ -7,28 +7,12 @@ import * as colors from '../../styles/colors';
 
 const CinemasList = function ({ cinemas, onSelect }) {
 	
-	const sort = (arr) => {
-		if (arr !== null){
-			const sortedArr = arr.sort((first, second) => {
-				return first.name.toUpperCase() > second.name.toUpperCase() ? 1 : -1;
-			});
-
-			return sortedArr;
-		}
-		else{
-			return [];
-		}
-
-
-	};
-	const sorted = sort(cinemas);
-
   return (
 	
 		<View style={[ {flex:1}, body.body ]}>
 			<FlatList
 				numColumns={1}
-				data={sorted}
+				data={cinemas}
 				renderItem={({ item }) => (
 					<TouchableHighlight 
 						activeOpacity={1}

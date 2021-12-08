@@ -3,18 +3,9 @@ import { View, FlatList, Text, Image } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
 import styles from './styles';
+import Genres from '../Genres';
 
 const MoviesList = function ({ films, onSelect}) {
-	const prant = (item) => {
-		console.log(item);
-	} 
-	// console.log(films);
-
-// 	const genreList = ( list ) =>{ 
-// 		const genres = [];
-// 		list.forEach((genre) => { genres.push(genre.Name) })
-// 		return genres;
-// 	},
 
 	return (
     <View style={{ flex: 1 }}>
@@ -23,7 +14,7 @@ const MoviesList = function ({ films, onSelect}) {
       data={films}
       renderItem={({ item }) => (
 				<TouchableHighlight
-					onPress={() => prant( item.showtimes )}>
+					onPress={() => onSelect(item)}>
 					<View style={styles.card}>
 {/* 					// There are inconsitencies with the data */}
 {/* 					// Some movies have omdb as property but it is an empty array */}
@@ -54,16 +45,7 @@ const MoviesList = function ({ films, onSelect}) {
 						
 						<Text style={styles.subtext}>{ item.year }</Text> 
 
-						<FlatList
-							numColumns={4}
-							data={ item.genres }
-							renderItem={({ item }) => (
-								<View style={ { marginTop: 15, alignItems: 'center', justifyContent: 'center', flex: 1, flexDirection: 'row' } }>
-									<Text style={styles.subtext}>{ item["NameEN	"] }</Text>
-								</View>
-							)}
-							keyExtractor={genre => genre.id}
-						/>
+						<Genres genres={ item.genres } />
 
 					</View>
 

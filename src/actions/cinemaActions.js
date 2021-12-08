@@ -5,12 +5,20 @@ import * as constants from '../constants';
 export const getAllCinemas = (token) => {
     return async dispatch => {
         try {
-            const cinemas = await API.getCinemas(token);
-            dispatch(getAllCinemasSuccess(cinemas));
+					const res = await API.getCinemas(token);
+
+					const sort = async (arr) => {
+					  await arr.sort((first, second) => {
+						  return first.name.toUpperCase() > second.name.toUpperCase() ? 1 : -1;
+					  });};
+					sort(res);
+					dispatch(getAllCinemasSuccess(res));
+
+
         } catch (err) {
             // TODO: dispatch some error
-            //console.log(err);
-            console.log('error in cinemaAction')
+            console.log(err);
+            // console.log('error in cinemaAction')
         }
     };
 }
