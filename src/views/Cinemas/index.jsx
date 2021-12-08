@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import CinemasList from '../../components/CinemasList';
 import Toolbar from '../../components/Toolbar';
 import { getAllCinemas } from '../../actions/cinemaActions';
+import { getUpcoming } from '../../actions/moviesActions';
 import { holdCinema } from '../../actions/cinemaDetailsActions';
 
 const Cinemas = function ( {route,  navigation: { navigate } } ) {
@@ -15,10 +16,13 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	useEffect( ()  => {
 		(async () => {
 			dispatch(getAllCinemas(token));
+			dispatch(getUpcoming(token))
 
 		})();
 	}, []);
 
+	const upcoming = useSelector(state => state.upcoming);
+	console.log(upcoming);
 	const cinemas = useSelector(state => state.cinemas);
 	// console.log(cinemas);	
 
