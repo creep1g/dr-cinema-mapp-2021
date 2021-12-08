@@ -6,6 +6,7 @@ import Toolbar from '../../components/Toolbar';
 import { getAllCinemas } from '../../actions/cinemaActions';
 import { selectedCinema } from '../../actions/cinemaActions';
 
+
 const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	
 	const token = useSelector(state => state.token);
@@ -15,10 +16,13 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	useEffect( ()  => {
 		(async () => {
 			dispatch(getAllCinemas(token));
+			dispatch(getUpcoming(token))
 
 		})();
 	}, []);
 
+	const upcoming = useSelector(state => state.upcoming);
+	console.log(upcoming);
 	const cinemas = useSelector(state => state.cinemas);
 	// console.log(cinemas);	
 
