@@ -15,7 +15,7 @@ export const auth = async () => {
 		.catch( (error) => console.log(error) )
 };
 
-export const getUpComing = async (token) => {
+export const getUpcoming = async (token) => {
 	const requestBody = {
 		method: 'GET',
 		headers: { "x-access-token": token, 
@@ -24,7 +24,6 @@ export const getUpComing = async (token) => {
 	};
 	return fetch(baseUrl+'/upcoming', requestBody)
 		.then( (response) => response.json() )
-		.then( (res) => upComing = res)
 		.catch( (error) => console.log(error) )
 };
 

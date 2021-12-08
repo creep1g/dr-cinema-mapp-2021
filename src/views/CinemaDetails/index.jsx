@@ -63,7 +63,10 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 	};
   return(
 	  <ScrollView style={ [body.body, { flex:1 }] }>
-		<Toolbar getMovies={() => navigate("Movies", { cinemaId: cinema.id })} />
+		<Toolbar 
+		getMovies={() => navigate("Movies", { cinemaId: cinema.id })} 
+		getUpcoming={() => navigate('Upcoming')}
+		/>
 		<View style={{ justifyContent:'center', alignItems: 'center'}}>
 			<View style={ [styles.title, styles.shadow, styles.border] }>
 			  <Text style={ styles.titleText }> { cinema.name } </Text>

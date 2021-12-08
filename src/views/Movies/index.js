@@ -20,7 +20,9 @@ const Movies = function ( {route,  navigation: { navigate } } ) {
 
 	return(
 		<View style={{ flex: 1 }}>
-			<Toolbar />
+			<Toolbar 
+			getUpcoming={() => navigate('Upcoming')}
+			/>
 			<MoviesList
 				onSelect={(id) => onPressMovie(id)} 
                 films={movies}/>
