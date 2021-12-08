@@ -1,42 +1,30 @@
 import React, { useState, useEffect } from 'react';
-
-import { View, TouchableHighlight, Text, FlatList } from 'react-native';
+import { View,  Text, } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import CinemasList from '../../components/CinemasList';
 import Toolbar from '../../components/Toolbar';
+import { getAllCinemas } from '../../actions/cinemaActions';
 import { holdCinema } from '../../actions/cinemaDetailsActions';
-import styles from './styles';
-import * as API from '../../services/api';
-import body from '../../styles/body';
-import * as colors from '../../styles/colors';
 
 const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	
-	const cinemas = useSelector(state => state.cinemas);
-	const movies = useSelector(state => state.movies);
-	const upcoming = useSelector(state => state.upcoming);
+	const token = useSelector(state => state.token);
+	// console.log(token);
 	const dispatch = useDispatch()
-	//const token = route.params.token;
 
-	const onClick = async ( cinema ) => {
-		dispatch(holdCinema(cinema));
-		navigate("CinemaDetails");
-	}
+	useEffect( ()  => {
+		(async () => {
+			dispatch(getAllCinemas(token));
 
-	const getCinemas = async () => {
-		console.log(cinemas)
-	}
-	
+		})();
+	}, []);
 
-	const getMovies = async () => {
-		console.log(movies)
-	}
+	const cinemas = useSelector(state => state.cinemas);
+	// console.log(cinemas);	
 
-	const getUpcoming = async () => {
-		console.log(upcoming)
-	}
-	
-	// console.log(cinemas);
+	const onClick = ( cinema ) => {
+		navigate("CinemaDetails", { cinema: cinema });
+	};
 
 	return(
 
@@ -47,7 +35,7 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 				getMovies={() => getMovies()}
 				getUpcoming={() => getMovies()}
 			/>
-			<CinemasList cinemas={cinemas} onSelect={(id) => navigate("CinemaDetails", { cinema: id })}  />
+			<CinemasList cinemas={cinemas} onSelect={(id) => onClick(id)}  />
 		</View>
 			
 	)

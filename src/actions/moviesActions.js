@@ -23,6 +23,43 @@ export const getUpcoming = (token) => {
     }
 }
 
+export const getMoviesByCinema = (token, cinema) => {
+	return async dispatch => {
+		try{
+			const movies = await API.getMovies(token);
+			const filtered = [];
+			
+			for (let i = 0; i < movies.length; i++){
+				for (let j = 0; j < movies[i].showtimes.length; j++){
+					if (movies[i].showtimes[j].cinema.id === cinema){
+								filtered.push(movies[i]);
+					};
+				};
+			};
+			dispatch(getAllMoviesSuccess(filtered));
+		}
+		catch (err) {
+			console.log(err);
+		}
+	}
+}
+
+export const getMovieById = (token, id) => {
+	return async dispatch => {
+		try{
+			await API.getMovieById(token, id)
+				.then( (movie) => dispatch(getMovieSuccess(movie)) );	
+		} catch (err) {
+			console.log(err);
+		} 
+	}
+}
+
+const getMovieSuccess = movie => ({
+	type: constants.MOVIE,
+	payload: movie
+});
+
 const getAllMoviesSuccess = movies => ({
     type: constants.MOVIES,
     payload: movies

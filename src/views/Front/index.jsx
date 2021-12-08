@@ -11,8 +11,6 @@ import * as API from '../../services/api-caller';
 
 const Front = function( { navigation: {navigate} } )  {
 
-	const token = useSelector(state => state.token)
-	const dispatch = useDispatch()
 	
 	useEffect( () => {
 		(async () => {

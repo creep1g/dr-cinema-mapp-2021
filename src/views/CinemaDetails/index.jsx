@@ -2,37 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { View, TouchableHighlight, Text, FlatList, Linking, ScrollView } from 'react-native';
 import styles from './styles';
 import body from '../../styles/body';
-import * as colors from '../../styles/colors';
-import * as API from '../../services/api-caller';
 import Toolbar from '../../components/Toolbar';
-import {useSelector} from 'react-redux';
-import WebView from 'react-native-webview';
+import {useDispatch, useSelector} from 'react-redux';
+import { getMoviesByCinema } from '../../actions/moviesActions';
 
 const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 	// This should be done with redux but i can't figure it out!
+	const dispatch = useDispatch();
+	const { cinema } = route.params;
+	const token = useSelector(state => state.token);
 
-  const { cinema } = route.params;
-  
-  const movies = useSelector(state => state.movies);
-  
-  
+	useEffect(() => {
+		( async () => {
+			dispatch(getMoviesByCinema(token, cinema.id))
+		} )();
+	}, []);
 
-  // console.log(movies);
-
-  const getMovies = ( cinema ) => { 
-	const filteredMovies = [];
-	
-	for (let i = 0; i < movies.length; i++){
-	  for (let j = 0; j < movies[i].showtimes.length; j++){
-		  if (movies[i].showtimes[j].cinema.id === cinema){
-            filteredMovies.push(movies[i]);
-		};
-	  };
-	};
-	// This should navigate to Movie list and set movies to filtered movies.
-	navigate("Movies") 
-  }
-  
   const openUrlButton = (url) => {
 	  Linking.canOpenURL(url).then(supported => {
 		  if (supported){
@@ -73,9 +58,12 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
   const url = "http://" + cinema.website;
   const regex = /(<([^>]+)>)/ig;
   
+	const movieView = () => {
+		r
+	};
   return(
 	  <ScrollView style={ [body.body, { flex:1 }] }>
-		<Toolbar getMovies={() => getMovies(cinema.id)} />
+		<Toolbar getMovies={() => navigate("Movies", { cinemaId: cinema.id })} />
 		<View style={{ justifyContent:'center', alignItems: 'center'}}>
 			<View style={ [styles.title, styles.shadow, styles.border] }>
 			  <Text style={ styles.titleText }> { cinema.name } </Text>
@@ -115,7 +103,7 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 				onPress={() => openJaWeb(cinema["address	"], cinema.city)}>
 				<Text style={ styles.addressText }>{ cinema["address	"] }{"\n"}{ cinema.city }</Text>
 			</TouchableHighlight>
-
+			
 		</View>
 	</ScrollView>
 	)
