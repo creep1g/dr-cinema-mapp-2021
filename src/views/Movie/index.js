@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, View, TouchableHighlight, Text, Image, Pressable, ScrollView } from 'react-native';
-import { useDispatch, useSelector} from 'react-redux';
-import MoviesList from '../../components/MoviesList';
-import { getMovieById } from '../../actions/moviesActions';
+import { useSelector} from 'react-redux';
 import styles from './styles';
 import Genres from '../../components/Genres';
 
@@ -10,26 +8,19 @@ import Genres from '../../components/Genres';
 
 const Movie = function ( {route,  navigation: { navigate } } ) {
 	
-	const { movie, cinemaId } = route.params;
-	
-	console.log("haoeu " + cinemaId);
-	const token = useSelector(state => state.token);
-	const dispatch = useDispatch();
-	// const movie = useSelector(state => state.movie)
+	const movie = useSelector(state => state.movie)
+	const cinema = useSelector(state => state.cinema)
 	
 	useEffect( () => {
 		(async () => {
-			// dispatch(getMovieById(token, id))
 		})();
 	}, []);
 
-	// const movie = useSelector(state => state.movie);
-	// console.log(movie);
 	// Generate a list of showtimes for each title 
 	const getShowTimes = () => {
 		const showtimes = []
 		for (let i = 0; i < movie.showtimes.length; i++){
-			if (movie.showtimes[i].cinema.id === cinemaId){
+			if (movie.showtimes[i].cinema.id === cinema.id){
 				for (let j = 0; j < movie.showtimes[i].schedule.length; j++){
 					showtimes.push(movie.showtimes[i].schedule[j]);		
 				}

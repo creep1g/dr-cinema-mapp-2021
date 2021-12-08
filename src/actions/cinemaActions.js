@@ -23,7 +23,22 @@ export const getAllCinemas = (token) => {
     };
 }
 
+export const selectedCinema = (cinema) => {
+    return async dispatch => {
+        try {
+            dispatch(selectedCinemaSuccess(cinema))
+        } catch (err) {
+            console.log(`error in selectedCinema ${err}`);
+        }
+    }
+}
+
 const getAllCinemasSuccess = cinemas => ({
     type: constants.CINEMAS,
     payload: cinemas
+});
+
+const selectedCinemaSuccess = cinema => ({
+    type: constants.CINEMA,
+    payload: cinema
 });

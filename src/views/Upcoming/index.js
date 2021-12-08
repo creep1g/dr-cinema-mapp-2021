@@ -24,7 +24,6 @@ const Upcoming = function ( {route,  navigation: { navigate } } ) {;
 
     const getSortedUpcoming = () => upcoming.sort((a,b) => b['release-dateIS'] - a['release-dateIS'])
 
-
 	return(
 		<View style={{ flex: 1 }}>
 			<MoviesList
