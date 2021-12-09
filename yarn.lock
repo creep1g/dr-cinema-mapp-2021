@@ -10233,6 +10233,11 @@
   dependencies:
     "warn-once" "^0.1.0"
 
+"react-native-select-dropdown@^1.4.0":
+  "integrity" "sha512-CeiFQ8F3lI7SAB9l/uMbGUeJmslUkyz9Vv8DHutOjO1bJpP1/Kfu9lH6QYjJ41DXFGQzT1bw8EGHe8rz/eTC/A=="
+  "resolved" "https://registry.npmjs.org/react-native-select-dropdown/-/react-native-select-dropdown-1.4.0.tgz"
+  "version" "1.4.0"
+
 "react-native-size-matters@^0.3.1":
   "integrity" "sha512-mKOfBLIBFBcs9br1rlZDvxD5+mAl8Gfr5CounwJtxI6Z82rGrMO+Kgl9EIg3RMVf3G855a85YVqHJL2f5EDRlw=="
   "resolved" "https://registry.npmjs.org/react-native-size-matters/-/react-native-size-matters-0.3.1.tgz"

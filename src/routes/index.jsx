@@ -8,6 +8,8 @@ import Movie from '../views/Movie';
 import CinemaDetails from '../views/CinemaDetails';
 import Upcoming from '../views/Upcoming';
 import UpcomingDetails from '../views/UpcomingDetails';
+import BrowseMovies from '../views/BrowseMovies';
+import BrowseMovieDetail from '../views/BrowseMovieDetail';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +37,11 @@ const TopTabNavigator = function () {
                     component={Upcoming}
                     options={{ tabBarLabel: 'Upcoming'}}
                 />
+                <Tab.Screen
+                    name="Browse"
+                    component={BrowseMovies}
+                    options={{ tabBarLabel: 'Browse'}}
+                />
             </Tab.Navigator>  
         );
 }
@@ -42,7 +49,7 @@ const TopTabNavigator = function () {
 const Routes = function () {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Cinemas">
+      <Stack.Navigator initialRouteName="Home">
 				<Stack.Screen 
 						options={{ 
 						headerStatusBarHeight: 30, 
@@ -52,7 +59,7 @@ const Routes = function () {
 						},
 						headerStyle: styles.header,
 						headerTintColor:'#fff'}}
-						name="Cinemas" 
+						name="Home" 
 						component={TopTabNavigator} />
 
 				<Stack.Screen 
@@ -80,6 +87,19 @@ const Routes = function () {
 						title:""}}
 						name="CinemaDetails"
 						component={CinemaDetails} />
+
+				<Stack.Screen 
+						options={{
+						headerStatusBarHeight: 30,
+						headerStyle: styles.header,
+						headerTitleAlign: 'center',
+						headerTitleStyle:{
+								fontSize: 25,
+						},
+						headerTintColor:'#fff',
+						title:""}}
+						name="BrowseMovieDetail"
+						component={BrowseMovieDetail} />		
 {/*
     		<Stack.Screen
 						options={{ 
