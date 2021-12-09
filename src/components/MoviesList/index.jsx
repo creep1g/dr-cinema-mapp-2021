@@ -7,11 +7,14 @@ import Genres from '../Genres';
 import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
 
-const MoviesList = function ({ onSelect, upcoming}) {
+const MoviesList = function ({ onSelect, upcoming, all}) {
 	
 	const films = () => {
 		if (upcoming) {
 			return useSelector(state => state.upcoming); 
+		}
+		if (all) {
+			return useSelector(state => state.allMovies)
 		}
 		return useSelector(state => state.movies);
 		}
@@ -81,10 +84,12 @@ const MoviesList = function ({ onSelect, upcoming}) {
 MoviesList.propTypes = {
 	onSelect: PropTypes.func.isRequired,
 	upcoming: PropTypes.bool,
+	all: PropTypes.bool,
 };
 
 MoviesList.defaultProps = {
-	upcoming: false
+	upcoming: false,
+	all: false,
 };
 
 export default MoviesList;

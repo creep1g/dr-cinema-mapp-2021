@@ -3,7 +3,7 @@ import { View  } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import CinemasList from '../../components/CinemasList';
 import { getAllCinemas, selectedCinema } from '../../actions/cinemaActions';
-import { getUpcoming } from '../../actions/moviesActions';
+import { getUpcoming, setAllMovies } from '../../actions/moviesActions';
 
 const Cinemas = function ( { navigation: { navigate, setParams } } ) {
 
@@ -14,7 +14,8 @@ const Cinemas = function ( { navigation: { navigate, setParams } } ) {
 	useEffect( ()  => {
 		(async () => {
 			dispatch(getAllCinemas(token));
-			dispatch(getUpcoming(token))
+			dispatch(getUpcoming(token));
+			dispatch(setAllMovies(token));
 
 		})();
 	}, []);

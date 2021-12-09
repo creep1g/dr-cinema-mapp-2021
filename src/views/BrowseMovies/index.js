@@ -8,12 +8,11 @@ import { getAllMovies, selectedMovie } from '../../actions/moviesActions';
 const BrowseMovies = function ( {route,  navigation: { navigate } } ) {
 	
     const dispatch = useDispatch();
-    const movies = useSelector(state => state.movies);
+    const movies = useSelector(state => state.allMovies);
     const token = useSelector(state => state.token)
 
     useEffect( () => {
 		(async () => {
-            dispatch(getAllMovies(token))
 		})();
 	}, []);
 
@@ -41,7 +40,7 @@ const BrowseMovies = function ( {route,  navigation: { navigate } } ) {
             </TouchableHighlight>
 			<MoviesList
 				onSelect={(movie) => onPressMovie(movie)} 
-                films={movies}/>
+                all={true}/>
 		</View>
 	)
 }
