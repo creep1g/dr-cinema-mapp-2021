@@ -18,9 +18,19 @@ export const setAllMovies = (token) => {
             const movies = await API.getMovies(token);
             dispatch(allMoviesSuccess(movies))
         } catch (err) {
-            console.log(`error in getAllMovies ${err}`)
+            console.log(`error in setAllMovies ${err}`)
         }
     };
+}
+
+export const setMovieFilter = (movies) => {
+	return async dispatch => {
+		try {
+			dispatch(getAllMoviesSuccess(movies))
+		} catch (err) {
+			console.log(`error in setFilter ${err}`)
+		}
+	}
 }
 
 export const getUpcoming = (token) => {

@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, TouchableHighlight, Text } from 'react-native';
 import { useSelector, useDispatch} from 'react-redux';
 import MoviesList from '../../components/MoviesList';
-import { getAllMovies, selectedMovie } from '../../actions/moviesActions';
+import { setMovieFilter, selectedMovie } from '../../actions/moviesActions';
+import Dropdown from '../../components/Dropdown';
 
 
 const BrowseMovies = function ( {route,  navigation: { navigate } } ) {
 	
+    const [filter, setFilter] = useState(false);
     const dispatch = useDispatch();
     const movies = useSelector(state => state.allMovies);
     const token = useSelector(state => state.token)
@@ -21,26 +23,35 @@ const BrowseMovies = function ( {route,  navigation: { navigate } } ) {
         navigate('BrowseMovieDetail');
     }
 
-    const test = () => {
-        const genres = []
+    const onFilter = (genre) => {
+        const filteredMovies = []
         for (var i = 0; i < movies.length; i++) {
-            for (var j = 0; j < movies[i].genres.length; j++) {
-                if (!genres.includes(movies[i].genres[j]["NameEN	"])) {
-                    genres.push(movies[i].genres[j]["NameEN	"])
+            for (var j = 0; j < movies[i].genres.length; j++){
+                if (movies[i].genres[j]["NameEN	"] === genre) {
+                    filteredMovies.push(movies[i].genres)
                 }
             }
         }
-        console.log(genres)
+        dispatch(setMovieFilter(filteredMovies))
+    }
+
+    const test = () => {
+        console.log(filter)
     }
 
 	return(
 		<View style={{ flex: 1 }}>
+            <Dropdown 
+                selected={(genre) => {
+                    setFilter(true)
+                    onFilter(genre)}}/>
             <TouchableHighlight onPress={() => test()}>
                 <Text>Test</Text>
             </TouchableHighlight>
 			<MoviesList
 				onSelect={(movie) => onPressMovie(movie)} 
-                all={true}/>
+                all={true}
+                filter={filter}/>
 		</View>
 	)
 }
