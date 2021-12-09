@@ -11,6 +11,9 @@ const MoviesList = function ({ onSelect, upcoming, all, filter}) {
 	
 	const films = () => {
 		if (upcoming) {
+			if (filter) {
+				return useSelector(state => state.upcomingFilter)
+			}
 			return useSelector(state => state.upcoming); 
 		}
 		if (all) {

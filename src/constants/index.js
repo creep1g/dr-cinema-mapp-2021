@@ -7,3 +7,4 @@ export const UPCOMING = 'UPCOMING';
 export const CURRENT_UPCOMING = 'CURRENT_UPCOMING';
 export const SELECTED_MOVIE = 'SELECTED_MOVIE';
 export const ALL_MOVIES = 'ALL_MOVIES';
+export const UPCOMING_FILTER = 'UPCOMING_FILTER';

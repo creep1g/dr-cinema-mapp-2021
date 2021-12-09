@@ -45,6 +45,16 @@ export const getUpcoming = (token) => {
     }
 }
 
+export const setUpcomingFilter = (upcoming) => {
+	return async dispatch => {
+		try {
+			dispatch(setUpcomingFilterSuccess(upcoming));
+		} catch (err) {
+			console.log(`error in setUpcomingFilter ${err}`)
+		}
+	}
+}
+
 export const getMoviesByCinema = (token, cinema) => {
 	return async dispatch => {
 		try{
@@ -111,4 +121,9 @@ const selectedMovieSuccess = movie => ({
 const allMoviesSuccess = movies => ({
 	type: constants.ALL_MOVIES,
 	payload: movies
+})
+
+const setUpcomingFilterSuccess = upcoming => ({
+	type: constants.UPCOMING_FILTER,
+	payload: upcoming
 })
