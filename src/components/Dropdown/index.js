@@ -35,11 +35,10 @@ const Dropdown = function ({selected, isUpcoming}) {
     return (
         <SelectDropdown
         data={allGenres()}
-        // defaultValueByIndex={1} // use default value by index or default value
-        // defaultValue={'Canada'} // use default value by index or default value
         defaultButtonText={'Choose genre'}
-        //buttonStyle={styles.button}
+        buttonStyle={[ styles.button, styles.shadow ]}
         buttonTextStyle={styles.buttonText}
+				rowStyle={{padding: 10, margin: 10}}
         dropdownIconPosition={'right'}
         renderDropdownIcon={() => {
           return (
