@@ -10,7 +10,7 @@ export default StyleSheet.create ({
 		borderColor: colors.purp,
 		// borderWidth: 0.5,
 		padding: 10,
-		backgroundColor: colors.highlight,
+		backgroundColor: colors.five,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},

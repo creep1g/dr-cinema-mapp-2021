@@ -15,7 +15,7 @@ const TicketList = function ({showtime, cinema, buy}) {
 									 style={({ pressed }) => [
 											{
 										backgroundColor: pressed
-										? colors.two
+										? colors.five
 										: colors.three
 										},
 										styles.button, styles.shadow, styles.border

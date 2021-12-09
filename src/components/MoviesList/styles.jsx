@@ -9,7 +9,7 @@ export default StyleSheet.create ({
 		borderRadius: 10,
 		borderColor: colors.purp,
 		padding: 10,
-		backgroundColor: colors.three,
+		backgroundColor: colors.four,
 		justifyContent: 'space-between',
 		flexDirection: 'row',
 		alignItems: 'center',
