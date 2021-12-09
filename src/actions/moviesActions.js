@@ -2,62 +2,63 @@ import * as API from '../services/api';
 import * as constants from '../constants';
 
 export const getAllMovies = (token) => {
-    return async dispatch => {
-        try {
-            const movies = await API.getMovies(token);
-            dispatch(getAllMoviesSuccess(movies))
-        } catch (err) {
-            console.log(`error in getAllMovies ${err}`)
-        }
-    };
-}
+  return async (dispatch) => {
+    try {
+      const movies = await API.getMovies(token);
+      dispatch(getAllMoviesSuccess(movies));
+    } catch (err) {
+      console.log(`error in getAllMovies ${err}`);
+    }
+  };
+};
 
 export const setAllMovies = (token) => {
-    return async dispatch => {
-        try {
-            const movies = await API.getMovies(token);
-            dispatch(allMoviesSuccess(movies))
-        } catch (err) {
-            console.log(`error in setAllMovies ${err}`)
-        }
-    };
-}
+  return async (dispatch) => {
+    try {
+      const movies = await API.getMovies(token);
+      dispatch(allMoviesSuccess(movies));
+    } catch (err) {
+      console.log(`error in setAllMovies ${err}`);
+    }
+  };
+};
 
 export const setMovieFilter = (movies) => {
-	return async dispatch => {
-		try {
-			dispatch(getAllMoviesSuccess(movies))
-		} catch (err) {
-			console.log(`error in setFilter ${err}`)
-		}
-	}
-}
+  return async (dispatch) => {
+    try {
+      dispatch(getAllMoviesSuccess(movies));
+    } catch (err) {
+      console.log(`error in setFilter ${err}`);
+    }
+  };
+};
 
 export const getUpcoming = (token) => {
-    return async dispatch => {
-        try {
-            const upcoming = await API.getUpcoming(token);
-						await upcoming.sort((a,b) => a['release-dateIS'] > b['release-dateIS'] ? 1 : -1)
-            dispatch(getUpcomingSuccess(upcoming));
-        } catch (err) {
-            console.log('error in getUpcoming in movies actions')
-        }
+  return async (dispatch) => {
+    try {
+      const upcoming = await API.getUpcoming(token);
+      await upcoming.sort((a, b) =>
+            a['release-dateIS'] > b['release-dateIS'] ? 1 : -1);
+      dispatch(getUpcomingSuccess(upcoming));
+    } catch (err) {
+      console.log('error in getUpcoming in movies actions');
     }
-}
+  };
+};
 
 export const setUpcomingFilter = (upcoming) => {
-	return async dispatch => {
-		try {
-			dispatch(setUpcomingFilterSuccess(upcoming));
-		} catch (err) {
-			console.log(`error in setUpcomingFilter ${err}`)
-		}
-	}
-}
+  return async (dispatch) => {
+    try {
+      dispatch(setUpcomingFilterSuccess(upcoming));
+    } catch (err) {
+      console.log(`error in setUpcomingFilter ${err}`);
+    }
+  };
+};
 
 export const getMoviesByCinema = (token, cinema) => {
-	return async dispatch => {
-		try{
+  return async (dispatch) => {
+    try {
 			const movies = await API.getMovies(token);
 			const filtered = [];
 			

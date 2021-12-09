@@ -7,7 +7,7 @@ import { getUpcoming, selectedMovie, setUpcomingFilter } from '../../actions/mov
 import Dropdown from '../../components/Dropdown';
 
 
-const Upcoming = function ( {route,  navigation: { navigate } } ) {;
+const Upcoming = function ( {route,  navigation: { navigate } } ) {
 	
     const token = useSelector(state => state.token);
     const dispatch = useDispatch()
