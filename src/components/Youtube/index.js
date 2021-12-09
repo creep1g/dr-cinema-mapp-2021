@@ -4,7 +4,7 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 import {Icon} from 'react-native-elements';
 
 
-const Youtube = function ( {route,  navigation: { navigate } } ) {
+const Youtube = function ( {videoId} ) {
 	
 	const [playing, setPlaying] = useState(false);
 	const [isMute, setMute] = useState(false);
@@ -46,9 +46,10 @@ const Youtube = function ( {route,  navigation: { navigate } } ) {
 		  ref={controlRef}
 		  play={playing}
 		  mute={isMute}
-		  videoId={route.params.videoId}
+          videoId={videoId}
 		  onChangeState={onStateChange}
 		/>
+        {/* 
 		<View style={styles.controlContainer}>
 		  <ControlIcon
 			onPress={() => seekBackAndForth('rewind')}
@@ -67,6 +68,7 @@ const Youtube = function ( {route,  navigation: { navigate } } ) {
 		  onPress={muteVideo}
 		  name={isMute ? 'volume-up' : 'volume-off'}
 		/>	  
+        */}
 	  </View>
 
 	);
@@ -75,7 +77,7 @@ const Youtube = function ( {route,  navigation: { navigate } } ) {
   const styles = StyleSheet.create({
 	container: {
 	  flex: 1,
-	  backgroundColor: 'darkblue',
+	  //backgroundColor: 'darkblue',
 	},
 	controlContainer: {
 	  flexDirection: 'row',

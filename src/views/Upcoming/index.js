@@ -3,7 +3,7 @@ import { View} from 'react-native';
 import { useSelector} from 'react-redux';
 import MoviesList from '../../components/MoviesList';
 import {useDispatch} from 'react-redux';
-import { getUpcoming } from '../../actions/moviesActions';
+import { getUpcoming, selectedMovie } from '../../actions/moviesActions';
 
 
 const Upcoming = function ( {route,  navigation: { navigate } } ) {;
@@ -19,7 +19,8 @@ const Upcoming = function ( {route,  navigation: { navigate } } ) {;
 	}, []);
 	
 	const onPressMovie = (item) => {
-		navigate('Youtube', {videoId: item.trailers[0].results[0].key})
+		dispatch(selectedMovie(item))
+		navigate('UpcomingDetails')
 	}
 
 	upcoming.sort((a,b) => a['release-dateIS'] > b['release-dateIS'] ? 1 : -1)
