@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { View  } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import CinemasList from '../../components/CinemasList';
-import Toolbar from '../../components/Toolbar';
 import { getAllCinemas, selectedCinema } from '../../actions/cinemaActions';
 import { getUpcoming, setAllMovies } from '../../actions/moviesActions';
 

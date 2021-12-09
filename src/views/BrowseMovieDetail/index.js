@@ -8,12 +8,13 @@ import TicketList from '../../components/TicketList';
 
 
 
-const BrowseMovieDetail = function ( {route,  navigation: { navigate } } ) {
+const BrowseMovieDetail = function ( { navigation: { setOptions } } ) {
 	
 	const movie = useSelector(state => state.movie)
 	
 	useEffect( () => {
 		(async () => {
+			setOptions({ title: movie.title });
 		})();
 	}, []);
 
@@ -26,12 +27,9 @@ const BrowseMovieDetail = function ( {route,  navigation: { navigate } } ) {
 		<FlatList
 				ListHeaderComponent={
 				<>
-					<View style={{alignItems: 'center'}}>
-						<Text>{ movie.title }</Text>
-						<Text>{ movie.year }</Text>
-					</View>
+				<View style={{ flex:1, alignItems: 'center', justifyContent: 'center'}}>
 					{/* poster */}
-					<View style={{ alignItems: 'center'}}>
+					<View style={{ alignItems: 'center', marginTop:10}}>
 						{
 						movie.omdb.length !== 0
 						?
@@ -43,33 +41,69 @@ const BrowseMovieDetail = function ( {route,  navigation: { navigate } } ) {
 							/>
 							:
 							// Else use poster
-							<Image
-								style={[ styles.image, ]}
-								source={{uri: movie.poster}}
-							/>
-							}
+						<Image
+							style={[ styles.image, ]}
+							source={{uri: movie.poster}}
+						/>
+						}
+
 					</View>
+
+					<View style={{alignItems: 'center'}}>
+						<Text style={ styles.title }>{movie.title} ({ movie.year })</Text>
+					</View>
+
 					{/* Plot */}
-					<View style={{ alignItems: 'center'}}>
-						<Text>{ movie.plot }</Text>
+
+					<View style={ [
+						styles.plotContainer,
+						styles.shadow,
+						styles.border,
+						{ alignItems: 'center'}]}>
+						<Text style={ styles.plotText }>
+						{ movie.plot }{"\n"}{"\n"} 
+						Duration: { movie.durationMinutes } Minutes
+						</Text>
 					</View>
-					{/* duration */}
-					<View style={{ alignItems: 'center'}}>
-						<Text>{ movie.durationMinutes } Minutes</Text>
+
+					<View style={{ alignItems: 'center', justifyContent: 'center' }}>
+						<View style={ [styles.genreContainer, styles.shadow, styles.border] } >
+
+					<View>
+						<View style={{ justifyContent: 'center', alignItems: 'center'}}>
+							<Text style={ styles.genreText }> Genres </Text>
+						</View>
+						<FlatList
+							numColumns={3}
+							data={ movie.genres }
+							renderItem={({ item }) => (
+								<View style={ { 
+									marginTop: 15,
+									alignItems: 'center',
+									justifyContent: 'center',
+									flex: 1, 
+									flexDirection: 'row' } }>
+
+								<Text style={styles.genreText}>{ item["NameEN	"] }</Text>
+							</View>
+					)}
+				keyExtractor={genre => genre["NameEN	"]}
+				/>
+
 					</View>
-					{/* Year of release */}
-					<View >
-						<Genres genres={ movie.genres } />
-					</View>		
-				</>}
+						</View>
+				  </View>		
+				</View>
+				</>	
+			}
 				numColumns={1}
 				data={movie.showtimes}
 				renderItem={({item}) => (
                     <View>
-                        <Text>{item.cinema.name}</Text>
-						<TicketList
-                            showtime={item}
-                            buy={(url) => openLink(url)}
+											<TicketList
+													cinema={item.cinema.name}
+													showtime={item}
+													buy={(url) => openLink(url)}
                         />
                     </View>
 				)}
