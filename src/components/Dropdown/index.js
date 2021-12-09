@@ -9,7 +9,7 @@ const Dropdown = function ({selected}) {
         const genres = ['All']
         for (var i = 0; i < movies.length; i++) {
             for (var j = 0; j < movies[i].genres.length; j++) {
-                if (!genres.includes(movies[i].genres[j]["NameEN	"])) {
+                if (!genres.includes(movies[i].genres[j]["NameEN	"]) && movies[i].genres[j]["NameEN	"] !== undefined) {
                     genres.push(movies[i].genres[j]["NameEN	"])
                 }
             }
@@ -22,6 +22,7 @@ const Dropdown = function ({selected}) {
         data={allGenres()}
         // defaultValueByIndex={1} // use default value by index or default value
         // defaultValue={'Canada'} // use default value by index or default value
+        defaultValueByIndex={0}
         onSelect={(selectedItem, index) => {
           //console.log(selectedItem, index);
           selected(selectedItem)

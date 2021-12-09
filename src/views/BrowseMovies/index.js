@@ -24,30 +24,26 @@ const BrowseMovies = function ( {route,  navigation: { navigate } } ) {
     }
 
     const onFilter = (genre) => {
-        const filteredMovies = []
-        for (var i = 0; i < movies.length; i++) {
-            for (var j = 0; j < movies[i].genres.length; j++){
-                if (movies[i].genres[j]["NameEN	"] === genre) {
-                    filteredMovies.push(movies[i].genres)
+        if (genre === 'All') {
+            setFilter(false)
+        } else {
+            setFilter(true)
+            const filteredMovies = []
+            for (var i = 0; i < movies.length; i++) {
+                for (var j = 0; j < movies[i].genres.length; j++){
+                    if (movies[i].genres[j]["NameEN	"] === genre) {
+                        filteredMovies.push(movies[i])
+                    }
                 }
             }
+            dispatch(setMovieFilter(filteredMovies))
         }
-        dispatch(setMovieFilter(filteredMovies))
-    }
-
-    const test = () => {
-        console.log(filter)
     }
 
 	return(
 		<View style={{ flex: 1 }}>
-            <Dropdown 
-                selected={(genre) => {
-                    setFilter(true)
-                    onFilter(genre)}}/>
-            <TouchableHighlight onPress={() => test()}>
-                <Text>Test</Text>
-            </TouchableHighlight>
+                <Dropdown 
+                selected={(genre) => onFilter(genre)}/>
 			<MoviesList
 				onSelect={(movie) => onPressMovie(movie)} 
                 all={true}
