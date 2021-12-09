@@ -57,7 +57,7 @@ const Upcoming = function ( {route,  navigation: { navigate } } ) {;
 			</View>
 			<MoviesList
 				onSelect={(movie) => onPressMovie(movie)} 
-                all={true}
+                upcoming={true}
                 filter={filter}/>
 		</View>) }
 		keyExtractor={(item, index) => index.toString()}
