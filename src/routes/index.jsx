@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import styles from './styles';
+import * as colors from '../styles/colors';
 import Cinemas from '../views/Cinemas';
 import Movie from '../views/Movie';
 import CinemaDetails from '../views/CinemaDetails';
@@ -22,9 +23,9 @@ const TopTabNavigator = function () {
             <Tab.Navigator
                 initialRouteName="Cinemas"
                 screenOptions={{
-                    tabBarActiveTintColor: '#e91e63',
-                    tabBarLabelStyle: { fontSize: 12 },
-                    tabBarStyle: { backgroundColor: 'powderblue' },
+                    tabBarActiveTintColor: colors.four,
+                    tabBarLabelStyle: { fontSize: 16 },
+                    tabBarStyle: { backgroundColor: colors.one },
                 }}
             >
                 <Tab.Screen
