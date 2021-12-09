@@ -6,6 +6,7 @@ import upcoming from './upcomingReducer';
 import cinema from './cinemaReducer';
 import movie from './movieReducer';
 import allMovies from './allMoviesReducer';
+import upcomingFilter from './upcomingFilterReducer';
 
 export default combineReducers({
 		cinema,
@@ -15,4 +16,5 @@ export default combineReducers({
     upcoming,
     movie,
     allMovies,
+    upcomingFilter,
 });

@@ -1,19 +1,34 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import SelectDropdown from "react-native-select-dropdown";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import PropTypes from 'prop-types';
+import styles from './styles';
 
-const Dropdown = function ({selected}) {
+const Dropdown = function ({selected, isUpcoming}) {
     const movies = useSelector(state => state.allMovies)
+    const upcoming = useSelector(state => state.upcoming)
     
     const allGenres = () => {
         const genres = ['All']
-        for (var i = 0; i < movies.length; i++) {
+        if (upcoming) {
+          for (var i = 0; i < upcoming.length; i++) {
+            for (var j = 0; j < upcoming[i].genres.length; j++) {
+                if (!genres.includes(upcoming[i].genres[j]["NameEN	"]) && upcoming[i].genres[j]["NameEN	"] !== undefined) {
+                    genres.push(upcoming[i].genres[j]["NameEN	"])
+                }
+            }
+          }
+        } else {
+          for (var i = 0; i < movies.length; i++) {
             for (var j = 0; j < movies[i].genres.length; j++) {
                 if (!genres.includes(movies[i].genres[j]["NameEN	"]) && movies[i].genres[j]["NameEN	"] !== undefined) {
                     genres.push(movies[i].genres[j]["NameEN	"])
                 }
             }
+          }
         }
+        
         return genres;
     }
 
@@ -22,7 +37,15 @@ const Dropdown = function ({selected}) {
         data={allGenres()}
         // defaultValueByIndex={1} // use default value by index or default value
         // defaultValue={'Canada'} // use default value by index or default value
-        defaultValueByIndex={0}
+        defaultButtonText={'Choose genre'}
+        //buttonStyle={styles.button}
+        buttonTextStyle={styles.buttonText}
+        dropdownIconPosition={'right'}
+        renderDropdownIcon={() => {
+          return (
+            <FontAwesome name="chevron-down" color={"#444"} size={14} />
+          );
+        }}
         onSelect={(selectedItem, index) => {
           //console.log(selectedItem, index);
           selected(selectedItem)
@@ -39,4 +62,12 @@ const Dropdown = function ({selected}) {
 
 };
 
+Dropdown.propTypes = {
+  selected: PropTypes.func.isRequired,
+  isUpcoming: PropTypes.bool,
+}
+
+Dropdown.defaultProps ={
+  isUpcoming: false
+}
 export default Dropdown;
