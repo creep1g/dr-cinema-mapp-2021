@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, TouchableHighlight, Text, FlatList, Linking, ScrollView } from 'react-native';
 import styles from './styles';
 import body from '../../styles/body';
-import Toolbar from '../../components/Toolbar';
 import {useDispatch, useSelector} from 'react-redux';
 import { getMoviesByCinema } from '../../actions/moviesActions';
 import MoviesList from '../../components/MoviesList';
@@ -25,27 +24,13 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate, setOpti
 
 	// Opens URL to cinema website
   const openUrlButton = (url) => {
-	  Linking.canOpenURL(url).then(supported => {
-		  if (supported){
 			  Linking.openURL(url);
-		  }
-		  else {
-			  console.log("Proplem with URI " + url)
-		  }
-	  });
 	};
 
 	// Opens Address on JA.IS
   const openJaWeb = ( street, city ) => {
    	const url = 'https://ja.is/?q='+street+" "+city 
-	  Linking.canOpenURL(url).then(supported => {
-		  if (supported){
-			  Linking.openURL(url);
-		  }
-		  else{
-			  console.log(url + " Does not work");
-		  }
-	  });
+		Linking.openURL(url);
 	};
 
 	// Opens phone when phone number is pressed
@@ -74,10 +59,6 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate, setOpti
 	
   return(
 	  <View style={ [body.body, { flex:1 }] }>
-		<Toolbar 
-		getMovies={() => navigate("Movies")} 
-		getUpcoming={() => navigate('Upcoming')}
-		/>
 		<FlatList
 			numColumns={1}
 			data={[0]}
@@ -92,7 +73,7 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate, setOpti
 					cinema.description !== null
 					?
 					<View style={ [ styles.border, styles.shadow, styles.description] }>
-						<Text style={ styles.descrText }> { cinema.description.replace(regex, '\n') } </Text>
+						<Text style={ styles.descrText }> { cinema.description.replace(regex, ' ') } </Text>
 					</View>
 					:
 					<View style={ [ styles.border, styles.shadow, styles.description] }>

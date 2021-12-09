@@ -10187,7 +10187,7 @@
     "react-native-tabular-grid-markdown-view" "0.1.x"
     "simple-markdown" "0.3.x"
 
-"react-native-pager-view@*", "react-native-pager-view@>= 4.0.0":
+"react-native-pager-view@*", "react-native-pager-view@^5.4.9", "react-native-pager-view@>= 4.0.0":
   "integrity" "sha512-D6tzxpwMGdl6CXgtskGWhKRc5cJakCazESRGt7PkqnpyiH3N35ft1KmR82pCSQetAFlytFiToeu3a/dG5CELvA=="
   "resolved" "https://registry.npmjs.org/react-native-pager-view/-/react-native-pager-view-5.4.9.tgz"
   "version" "5.4.9"

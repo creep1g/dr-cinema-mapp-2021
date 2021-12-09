@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { View  } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import CinemasList from '../../components/CinemasList';
-import Toolbar from '../../components/Toolbar';
 import { getAllCinemas, selectedCinema } from '../../actions/cinemaActions';
 import { getUpcoming } from '../../actions/moviesActions';
 
@@ -32,11 +31,6 @@ const Cinemas = function ( { navigation: { navigate, setParams } } ) {
 	return(
 		
 		<View style={{ flex: 1 }}>
-			<Toolbar 
-				getCinemas={() => getCinemas()}
-				getMovies={() => getMovies()}
-				getUpcoming={() => navigate('Upcoming')}
-			/>
 			<CinemasList cinemas={cinemas} onSelect={(item) => onClick(item)}  />
 		</View>
 			
