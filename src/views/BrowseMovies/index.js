@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { View, TouchableHighlight, Text } from 'react-native';
+import React, { useState } from 'react';
+import {FlatList, View  } from 'react-native';
 import { useSelector, useDispatch} from 'react-redux';
 import MoviesList from '../../components/MoviesList';
 import { setMovieFilter, selectedMovie } from '../../actions/moviesActions';
 import Dropdown from '../../components/Dropdown';
 
 
-const BrowseMovies = function ( {route,  navigation: { navigate, setOptions } } ) {
+const BrowseMovies = function ( {navigation: { navigate } } ) {
 	
     const [filter, setFilter] = useState(false);
     const dispatch = useDispatch();
     const movies = useSelector(state => state.allMovies);
-    const token = useSelector(state => state.token)
 
     const onPressMovie = (movie) => {
         dispatch(selectedMovie(movie))
@@ -36,14 +35,22 @@ const BrowseMovies = function ( {route,  navigation: { navigate, setOptions } } 
     }
 
 	return(
+		<FlatList
+			numColumns={1}
+			data={[0]}
+			renderItem={({ item }) => (
 		<View style={{ flex: 1 }}>
-                <Dropdown 
-                selected={(genre) => onFilter(genre)}/>
+			<View style={{ alignItems: 'center'}}>
+				<Dropdown 
+					selected={(genre) => onFilter(genre)}/>
+			</View>
 			<MoviesList
 				onSelect={(movie) => onPressMovie(movie)} 
                 all={true}
                 filter={filter}/>
-		</View>
+		</View>) }
+			keyExtractor={(item, index) => index.toString()}
+		/>
 	)
 }
 

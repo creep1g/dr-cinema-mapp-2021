@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View} from 'react-native';
+import { View, FlatList } from 'react-native';
 import { useSelector} from 'react-redux';
 import MoviesList from '../../components/MoviesList';
 import {useDispatch} from 'react-redux';
@@ -45,16 +45,23 @@ const Upcoming = function ( {route,  navigation: { navigate } } ) {;
 	upcoming.sort((a,b) => a['release-dateIS'] > b['release-dateIS'] ? 1 : -1)
 
 	return(
+
+		<FlatList
+			numColumns={1}
+			data={[0]}
+			renderItem={({ item }) => (
 		<View style={{ flex: 1 }}>
-			<Dropdown
-				selected={(genre) => onFilter(genre)}
-				isUpcoming={true}/>
+			<View style={{ alignItems: 'center'}}>
+				<Dropdown 
+					selected={(genre) => onFilter(genre)}/>
+			</View>
 			<MoviesList
-				onSelect={(item) => onPressMovie(item)}
-                upcoming={true}
-				filter={filter}
-                />
-		</View>
+				onSelect={(movie) => onPressMovie(movie)} 
+                all={true}
+                filter={filter}/>
+		</View>) }
+		keyExtractor={(item, index) => index.toString()}
+		/>
 	)
 }
 
