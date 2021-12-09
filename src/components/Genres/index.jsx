@@ -11,14 +11,14 @@ const Genres = function ({ genres, inStyles }) {
   return (		
 	<View>
     <FlatList
-	  numColumns={4}
+	  numColumns={3}
       data={ genres }
 	  renderItem={({ item }) => (
 		<View style={ { marginTop: 15, alignItems: 'center', justifyContent: 'center', flex: 1, flexDirection: 'row' } }>
 		  <Text style={styles.subtext}>{ item["NameEN	"] }</Text>
 		</View>
 		)}
-	  keyExtractor={genre => genre.id}
+		keyExtractor={genre => genre["NameEN	"]}
 	/>
 	</View>
 	);
