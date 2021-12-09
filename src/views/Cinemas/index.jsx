@@ -22,7 +22,7 @@ const Cinemas = function ( { navigation: { navigate, setParams } } ) {
 
 	const upcoming = useSelector(state => state.upcoming);
 	const cinemas = useSelector(state => state.cinemas);
-	// console.log(cinemas);	
+	//console.log(cinemas);	
 
 	const onClick = ( cinema ) => {
 		dispatch(selectedCinema(cinema));
