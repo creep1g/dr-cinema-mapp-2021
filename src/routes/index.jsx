@@ -100,19 +100,7 @@ const Routes = function () {
 						title:""}}
 						name="BrowseMovieDetail"
 						component={BrowseMovieDetail} />		
-{/*
-    		<Stack.Screen
-						options={{ 
-						headerStatusBarHeight: 30,
-						headerStyle: styles.header,
-						headerTitleAlign:'center',
-						headerTitleStyle:{
-							fontSize:25
-						},
-						headerTintColor:'#fff'}}
-						name="Upcoming"
-						component={Upcoming} />
-*/}
+
 				<Stack.Screen
 						options={{
 							animationEnabled: false, 
