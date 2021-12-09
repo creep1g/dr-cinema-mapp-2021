@@ -16,6 +16,7 @@ export const getUpcoming = (token) => {
     return async dispatch => {
         try {
             const upcoming = await API.getUpcoming(token);
+						await upcoming.sort((a,b) => a['release-dateIS'] > b['release-dateIS'] ? 1 : -1)
             dispatch(getUpcomingSuccess(upcoming));
         } catch (err) {
             console.log('error in getUpcoming in movies actions')

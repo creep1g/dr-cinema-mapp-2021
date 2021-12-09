@@ -6,6 +6,7 @@ import Toolbar from '../../components/Toolbar';
 import {useDispatch, useSelector} from 'react-redux';
 import { getMoviesByCinema } from '../../actions/moviesActions';
 import MoviesList from '../../components/MoviesList';
+import { selectedMovie } from '../../actions/moviesActions';
 
 const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 	// This should be done with redux but i can't figure it out!
@@ -55,7 +56,12 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 	})
 		.catch((err) => console.log(err));
 };
-	
+		const onPressMovie = (movie) => {
+		dispatch(selectedMovie(movie))
+		navigate("Movie")
+	}
+
+
   const url = "http://" + cinema.website;
   const regex = /(<([^>]+)>)/ig;
 	
@@ -108,12 +114,12 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
 				onPress={() => openJaWeb(cinema["address	"], cinema.city)}>
 				<Text style={ styles.addressText }>{ cinema["address	"] }{"\n"}{ cinema.city }</Text>
 			</TouchableHighlight>
-			<MoviesList upcoming='false' 
-			onSelect={() => console.log()} />	
+			<MoviesList upcoming={false} 
+			onSelect={(movie) => onPressMovie(movie)} />	
 		</View>
 			)
 		}
-		keyExtractor={(cinema) => cinema.id}/>
+		keyExtractor={(id) => id}/>
 	</View>
 	)
 };

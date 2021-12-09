@@ -91,7 +91,6 @@ const MoviesList = function ({ onSelect, upcoming}) {
 };
 
 MoviesList.propTypes = {
-	films: PropTypes.array.isRequired,
 	onSelect: PropTypes.func.isRequired,
 	upcoming: PropTypes.bool,
 };
