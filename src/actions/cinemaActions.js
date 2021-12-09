@@ -12,7 +12,7 @@ export const getAllCinemas = (token) => {
 						  return first.name.toUpperCase() > second.name.toUpperCase() ? 1 : -1;
 					  });};
 					sort(res);
-					console.log(res);
+					// console.log(res);
 					dispatch(getAllCinemasSuccess(res));
 
 
