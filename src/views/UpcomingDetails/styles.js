@@ -19,5 +19,12 @@ export default StyleSheet.create ({
 		fontSize: 16,
 		margin: 5,
 		padding: 5
-	}
+	},
+
+	title: {
+		fontSize: 16,
+		margin: 10,
+		padding: 5,
+	},
+
 })

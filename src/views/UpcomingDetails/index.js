@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {View, Text, Image} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
@@ -7,9 +7,17 @@ import styles from './styles';
 
 
 
-const UpcomingDetails = function ( {route,  navigation: { navigate } } ) {
+const UpcomingDetails = function ( { navigation: { setOptions } } ) {
 
 	const movie = useSelector(state => state.movie)
+
+	
+	useEffect( () => {
+		(async () => {
+			setOptions({title: movie.title})
+		})();
+	}, []);
+
 	const hasTrailer = () => {
 		if (movie.trailers.length > 0) {
 			if (movie.trailers[0].results.length > 0) {
