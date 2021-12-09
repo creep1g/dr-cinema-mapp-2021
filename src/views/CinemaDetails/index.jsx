@@ -66,9 +66,17 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate, setOpti
 
 			<View>
 
+				<View style={{ alignItems: 'center'}}>
+					<Text style={{ fontSize: 30, padding:5, margin:5 }}>
+						In Theatres Now
+					</Text>
+				</View>
+
 				<MoviesList upcoming={false} 
 				onSelect={(movie) => onPressMovie(movie)} />	
+
 				<View style={styles.container}>
+
 					{
 					cinema.description !== null
 					?

@@ -1,10 +1,10 @@
-export const one = "#463F3A";
-export const two = "#8A817C";
-export const three = "#BCB8B1";
-export const four = "#F4F3EE";
-export const five = "#E0AFA0";
+export const one = "#383d40";
+export const two = "#62b0ba";
+export const three = "#62ba98";
+export const four = "#FFFFFF";
+export const five = "#FFFFFF";
 
-export const backgrnd = "#F4F3EE";
+export const backgrnd = "#f2f2f2";
 
 export const highlight = "#8a817c"
 

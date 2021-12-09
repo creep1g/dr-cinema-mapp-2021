@@ -16,7 +16,7 @@ const CinemasList = function ({ cinemas, onSelect }) {
 				renderItem={({ item }) => (
 					<TouchableHighlight 
 						activeOpacity={1}
-						underlayColor={ '#ff784f' }
+						underlayColor={ colors.one }
 						onPress={() => onSelect(item)}
 						style={[styles.card, styles.shadow]}
 					>

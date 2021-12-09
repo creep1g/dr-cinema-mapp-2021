@@ -3,30 +3,12 @@ import {Linking} from 'react-native';
 import { FlatList, View, TouchableHighlight, Text, Image, Pressable, ScrollView } from 'react-native';
 import { useSelector} from 'react-redux';
 import styles from './styles';
-import Genres from '../components/Genres';
-import TicketList from '../components/TicketList';
 
-
-
-const BrowseMovieDetail = function ( { navigation: { setOptions } } ) {
+const MovieDetail = function (  ) {
 	
 	const movie = useSelector(state => state.movie)
-	
-	useEffect( () => {
-		(async () => {
-			setOptions({ title: movie.title });
-		})();
-	}, []);
 
-	const openLink = (url) => {
-		Linking.openURL(url)
-	}
-
-	return(
-
-		<FlatList
-				ListHeaderComponent={
-				<>
+	return (
 				<View style={{ flex:1, alignItems: 'center', justifyContent: 'center'}}>
 					{/* poster */}
 					<View style={{ alignItems: 'center', marginTop:10}}>
@@ -71,7 +53,7 @@ const BrowseMovieDetail = function ( { navigation: { setOptions } } ) {
 
 					<View>
 						<View style={{ justifyContent: 'center', alignItems: 'center'}}>
-							<Text style={ styles.genreText }> Genres </Text>
+							<Text style={ [styles.genreText, {fontSize: 25 }] }> Genres </Text>
 						</View>
 						<FlatList
 							numColumns={3}
@@ -93,24 +75,9 @@ const BrowseMovieDetail = function ( { navigation: { setOptions } } ) {
 					</View>
 						</View>
 				  </View>		
+					<Text style={{ fontSize: 30, padding:5, margin: 5 }}>Tickets</Text>
 				</View>
-				</>	
-			}
-				numColumns={1}
-				data={movie.showtimes}
-				renderItem={({item}) => (
-                    <View>
-                        <Text style={styles.plotText}>{item.cinema.name}</Text>
-						<TicketList
-                            showtime={item}
-                            buy={(url) => openLink(url)}
-                        />
-                    </View>
-				)}
-				keyExtractor={(item) => item.cinema.name}
-                />
-
 	)
 }
 
-export default BrowseMovieDetail;
+export default MovieDetail;
