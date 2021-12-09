@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import SelectDropdown from "react-native-select-dropdown";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import styles from './styles';
 
 const Dropdown = function ({selected}) {
     const movies = useSelector(state => state.allMovies)
@@ -22,7 +24,15 @@ const Dropdown = function ({selected}) {
         data={allGenres()}
         // defaultValueByIndex={1} // use default value by index or default value
         // defaultValue={'Canada'} // use default value by index or default value
-        defaultValueByIndex={0}
+        defaultButtonText={'Choose genre'}
+        //buttonStyle={styles.button}
+        buttonTextStyle={styles.buttonText}
+        dropdownIconPosition={'right'}
+        renderDropdownIcon={() => {
+          return (
+            <FontAwesome name="chevron-down" color={"#444"} size={14} />
+          );
+        }}
         onSelect={(selectedItem, index) => {
           //console.log(selectedItem, index);
           selected(selectedItem)

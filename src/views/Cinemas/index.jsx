@@ -33,11 +33,6 @@ const Cinemas = function ( { navigation: { navigate, setParams } } ) {
 	return(
 		
 		<View style={{ flex: 1 }}>
-			<Toolbar 
-				getCinemas={() => getCinemas()}
-				getMovies={() => getMovies()}
-				getUpcoming={() => navigate('Upcoming')}
-			/>
 			<CinemasList cinemas={cinemas} onSelect={(item) => onClick(item)}  />
 		</View>
 			
