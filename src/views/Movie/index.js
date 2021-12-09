@@ -37,7 +37,7 @@ const Movie = function ( {route,  navigation: { navigate } } ) {
 	}
 
 	const test = () => {
-		console.log(showtimes[0])
+		console.log('erroooorrrr')
 	}
 
 	return(
@@ -58,6 +58,7 @@ const Movie = function ( {route,  navigation: { navigate } } ) {
 						<Image 
 							style={styles.image}
 							source={{uri: movie.omdb[0].Poster }} 
+							onError={() => test()}
 							/>
 							:
 							// Else use poster

@@ -6,9 +6,8 @@ import Toolbar from '../../components/Toolbar';
 import { getAllCinemas, selectedCinema } from '../../actions/cinemaActions';
 import { getUpcoming } from '../../actions/moviesActions';
 
-
 const Cinemas = function ( {route,  navigation: { navigate } } ) {
-	
+
 	const token = useSelector(state => state.token);
 	// console.log(token);
 	const dispatch = useDispatch()
@@ -31,8 +30,7 @@ const Cinemas = function ( {route,  navigation: { navigate } } ) {
 	};
 
 	return(
-
-
+		
 		<View style={{ flex: 1 }}>
 			<Toolbar 
 				getCinemas={() => getCinemas()}
