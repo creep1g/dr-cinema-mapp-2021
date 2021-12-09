@@ -31,7 +31,7 @@ const TopTabNavigator = function () {
                 <Tab.Screen
                     name="Cinemas"
                     component={Cinemas}
-                    options={{ tabBarLabel: 'Cinemas'}}
+                    options={{ tabBarLabel: 'Home'}}
                 />
                 <Tab.Screen
                     name="Upcoming"
@@ -60,6 +60,10 @@ const Routes = function () {
 						},
 						headerStyle: styles.header,
 						title: "",
+							headerLect: () => {
+								<Image
+									source={{uri: https://kvikmyndir.is/wp-content/themes/kvikmyndir/images/logo.png}}
+							}
 						headerTintColor:'#fff'}}
 						name="Home" 
 						component={TopTabNavigator} />
