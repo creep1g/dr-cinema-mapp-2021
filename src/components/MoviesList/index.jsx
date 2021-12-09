@@ -9,15 +9,7 @@ import {useSelector} from 'react-redux';
 
 const MoviesList = function ({ onSelect, upcoming}) {
 	
-	
-	const isDisabled = (item) => {
-		if (upcoming) {
-			if (item.trailers.length === 0 || (item.trailers.length > 0 && item.trailers[0].results.length === 0)){
-				return true;
-			} 
-		} 
-		return false;
-	}
+
 	
 	const films = useSelector(state => state.movies);
 	return (
@@ -28,7 +20,7 @@ const MoviesList = function ({ onSelect, upcoming}) {
       renderItem={({ item }) => (
 				<TouchableHighlight
 					onPress={() => onSelect(item)}
-					disabled={isDisabled(item)}>
+				>
 					<View style={styles.card}>
 {/* 					// There are inconsitencies with the data */}
 {/* 					// Some movies have omdb as property but it is an empty array */}
@@ -68,14 +60,6 @@ const MoviesList = function ({ onSelect, upcoming}) {
 
 						<Genres genres={ item.genres } />
 
-						
-						{
-							!isDisabled(item) && upcoming
-							?
-							<Text style={styles.subtext}>Click to watch trailer</Text>
-							:
-							<></>
-						}
 						
 
 					</View>
