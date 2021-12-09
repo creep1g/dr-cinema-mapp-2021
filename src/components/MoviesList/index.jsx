@@ -26,6 +26,8 @@ const MoviesList = function ({ onSelect, upcoming, all}) {
       data={films()}
       renderItem={({ item }) => (
 				<TouchableHighlight
+					activeOpacity={0.6}
+					underlayColor={ 'white'}
 					onPress={() => onSelect(item)}
 				>
 					<View style={styles.card}>

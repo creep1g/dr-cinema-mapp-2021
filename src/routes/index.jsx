@@ -52,12 +52,13 @@ const Routes = function () {
       <Stack.Navigator initialRouteName="Home">
 				<Stack.Screen 
 						options={{ 
-						headerStatusBarHeight: 30, 
+						headerStatusBarHeight: 10, 
 						headerTitleAlign:'center',
 						headerTitleStyle:{
 							fontSize:25
 						},
 						headerStyle: styles.header,
+						title: "",
 						headerTintColor:'#fff'}}
 						name="Home" 
 						component={TopTabNavigator} />

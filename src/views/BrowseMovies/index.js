@@ -5,16 +5,11 @@ import MoviesList from '../../components/MoviesList';
 import { getAllMovies, selectedMovie } from '../../actions/moviesActions';
 
 
-const BrowseMovies = function ( {route,  navigation: { navigate } } ) {
+const BrowseMovies = function ( {route,  navigation: { navigate, setOptions } } ) {
 	
     const dispatch = useDispatch();
     const movies = useSelector(state => state.allMovies);
     const token = useSelector(state => state.token)
-
-    useEffect( () => {
-		(async () => {
-		})();
-	}, []);
 
     const onPressMovie = (movie) => {
         dispatch(selectedMovie(movie))
