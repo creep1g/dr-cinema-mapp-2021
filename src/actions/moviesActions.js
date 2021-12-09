@@ -12,6 +12,17 @@ export const getAllMovies = (token) => {
     };
 }
 
+export const setAllMovies = (token) => {
+    return async dispatch => {
+        try {
+            const movies = await API.getMovies(token);
+            dispatch(allMoviesSuccess(movies))
+        } catch (err) {
+            console.log(`error in getAllMovies ${err}`)
+        }
+    };
+}
+
 export const getUpcoming = (token) => {
     return async dispatch => {
         try {
@@ -85,4 +96,9 @@ const getUpcomingSuccess = upcoming => ({
 const selectedMovieSuccess = movie => ({
 	type: constants.MOVIE,
 	payload: movie
+})
+
+const allMoviesSuccess = movies => ({
+	type: constants.ALL_MOVIES,
+	payload: movies
 })

@@ -5,6 +5,7 @@ import token from './tokenReducer';
 import upcoming from './upcomingReducer';
 import cinema from './cinemaReducer';
 import movie from './movieReducer';
+import allMovies from './allMoviesReducer';
 
 export default combineReducers({
 		cinema,
@@ -13,4 +14,5 @@ export default combineReducers({
     token,
     upcoming,
     movie,
+    allMovies,
 });
