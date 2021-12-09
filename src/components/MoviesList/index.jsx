@@ -25,6 +25,21 @@ const MoviesList = function ({ onSelect, upcoming, all, filter}) {
 		}
 		return useSelector(state => state.movies);
 		}
+
+	const checkImage = (url) => {
+			fetch(url)
+				.then((response) => response.status)
+				.then((res) => {
+					if (res === 200){
+						return true
+					}
+					else{ 
+						return false
+					}
+				}).catch((err) => { return true })
+	};
+
+
 		
 	return (
     <View style={{ flex: 1 }}>
@@ -45,7 +60,7 @@ const MoviesList = function ({ onSelect, upcoming, all, filter}) {
 
 						<View style={styles.shadow}>
 							{
-								item.omdb.length !== 0
+								checkImage(item.poster)
 								?
 								// If omdb is populated use it
 								<Image 

@@ -18,24 +18,6 @@ const UpcomingDetails = function ( { navigation: { setOptions } } ) {
 		})();
 	}, []);
 
-
-	const checkImage = (url) => {
-		console.log(url);
-		if( url !== undefined ){
-			fetch(url)
-				.then((response) => response.status)
-				.then((res) => {
-					console.log(res);
-					if (res !== '404'){
-						return true
-					}
-					else{ 
-						return false
-					}
-				})
-		}
-	};
-
 	const hasTrailer = () => {
 		if (movie.trailers.length > 0) {
 			if (movie.trailers[0].results.length > 0) {
@@ -44,14 +26,14 @@ const UpcomingDetails = function ( { navigation: { setOptions } } ) {
 		}
 		return false
 	}
-	// console.log(movie)
+	console.log(movie)
   
 	return (
 		<ScrollView>
 			<View style={{alignItems: 'center', margin: 10,}}>
 
 					{
-						checkImage(movie.poster)
+						movie.omdb.length !== 0
 						?
 						// If omdb is populated use it
 						<Image 
@@ -76,8 +58,7 @@ const UpcomingDetails = function ( { navigation: { setOptions } } ) {
 					</View>
 			</View>
 			
-			<View styles={[styles.videoContainer, styles.shadow, styles.border]}>
-
+			<View styles={styles.videoContainer}>
 			{
 				hasTrailer()
 				?
