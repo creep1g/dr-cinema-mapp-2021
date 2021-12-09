@@ -9,14 +9,18 @@ import {useSelector} from 'react-redux';
 
 const MoviesList = function ({ onSelect, upcoming}) {
 	
-
-	
-	const films = useSelector(state => state.movies);
+	const films = () => {
+		if (upcoming) {
+			return useSelector(state => state.upcoming); 
+		}
+		return useSelector(state => state.movies);
+		}
+		
 	return (
     <View style={{ flex: 1 }}>
 		<FlatList
     	numColumns={1}
-      data={films}
+      data={films()}
       renderItem={({ item }) => (
 				<TouchableHighlight
 					onPress={() => onSelect(item)}

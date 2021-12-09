@@ -68,7 +68,7 @@ const CinemaDetails = function ( { scene, route, navigation: { navigate } } ) {
   return(
 	  <View style={ [body.body, { flex:1 }] }>
 		<Toolbar 
-		getMovies={() => navigate("Movies", { cinemaId: cinema.id })} 
+		getMovies={() => navigate("Movies")} 
 		getUpcoming={() => navigate('Upcoming')}
 		/>
 		<FlatList
