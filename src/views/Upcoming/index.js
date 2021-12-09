@@ -4,6 +4,7 @@ import { useSelector} from 'react-redux';
 import MoviesList from '../../components/MoviesList';
 import {useDispatch} from 'react-redux';
 import { getUpcoming, selectedMovie } from '../../actions/moviesActions';
+import Dropdown from '../../components/Dropdown';
 
 
 const Upcoming = function ( {route,  navigation: { navigate } } ) {;
@@ -27,10 +28,12 @@ const Upcoming = function ( {route,  navigation: { navigate } } ) {;
 
 	return(
 		<View style={{ flex: 1 }}>
+			<Dropdown
+				selected={(genre) => onFilter(genre)}
+				isUpcoming={true}/>
 			<MoviesList
 				onSelect={(item) => onPressMovie(item)}
-                films={ upcoming }
-                upcoming={true}
+                isUpcoming={true}
                 />
 		</View>
 	)

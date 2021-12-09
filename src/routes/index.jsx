@@ -30,7 +30,7 @@ const TopTabNavigator = function () {
                 <Tab.Screen
                     name="Cinemas"
                     component={Cinemas}
-                    options={{ tabBarLabel: 'Home'}}
+                    options={{ tabBarLabel: 'Cinemas'}}
                 />
                 <Tab.Screen
                     name="Upcoming"
