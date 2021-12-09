@@ -6,17 +6,12 @@ import { setMovieFilter, selectedMovie } from '../../actions/moviesActions';
 import Dropdown from '../../components/Dropdown';
 
 
-const BrowseMovies = function ( {route,  navigation: { navigate } } ) {
+const BrowseMovies = function ( {route,  navigation: { navigate, setOptions } } ) {
 	
     const [filter, setFilter] = useState(false);
     const dispatch = useDispatch();
     const movies = useSelector(state => state.allMovies);
     const token = useSelector(state => state.token)
-
-    useEffect( () => {
-		(async () => {
-		})();
-	}, []);
 
     const onPressMovie = (movie) => {
         dispatch(selectedMovie(movie))

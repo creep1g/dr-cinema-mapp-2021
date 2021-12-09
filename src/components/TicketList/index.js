@@ -4,7 +4,6 @@ import * as colors from '../../styles/colors';
 import styles from './styles';
 
 const TicketList = function ({showtime, cinema, buy}) {
-	console.log(showtime);
     return (
         <View style={ { justifyContent: 'center', alignItems: 'center'} }>
             <FlatList

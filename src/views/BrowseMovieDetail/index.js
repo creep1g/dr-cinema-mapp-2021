@@ -7,7 +7,6 @@ import Genres from '../../components/Genres';
 import TicketList from '../../components/TicketList';
 
 
-
 const BrowseMovieDetail = function ( { navigation: { setOptions } } ) {
 	
 	const movie = useSelector(state => state.movie)
