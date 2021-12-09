@@ -36,9 +36,11 @@ const BrowseMovies = function ( {route,  navigation: { navigate, setOptions } } 
     }
 
 	return(
-		<View style={{ flex: 1 }}>
-                <Dropdown 
-                selected={(genre) => onFilter(genre)}/>
+			<View>
+				{/* <View style={{ alignItems: 'center'}}> */}
+                {/* <Dropdown */} 
+                {/* selected={(genre) => onFilter(genre)}/> */}
+				{/* </View> */}
 			<MoviesList
 				onSelect={(movie) => onPressMovie(movie)} 
                 all={true}

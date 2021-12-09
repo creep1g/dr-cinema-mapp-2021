@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import SelectDropdown from "react-native-select-dropdown";
+import styles from './styles';
 
 const Dropdown = function ({selected}) {
     const movies = useSelector(state => state.allMovies)
@@ -19,12 +20,10 @@ const Dropdown = function ({selected}) {
 
     return (
         <SelectDropdown
+				buttonStyle={[ styles.button,  styles.shadow ]}
         data={allGenres()}
-        // defaultValueByIndex={1} // use default value by index or default value
-        // defaultValue={'Canada'} // use default value by index or default value
         defaultValueByIndex={0}
         onSelect={(selectedItem, index) => {
-          //console.log(selectedItem, index);
           selected(selectedItem)
         }}
         buttonTextAfterSelection={(selectedItem, index) => {
