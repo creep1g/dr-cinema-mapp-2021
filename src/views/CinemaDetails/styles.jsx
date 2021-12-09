@@ -5,6 +5,12 @@ const { width: winWidth } = Dimensions.get('window');
 
 export default StyleSheet.create({
 
+	container: {
+		margin:10,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+
 	shadow: {
 		// Shadow for iOS
 		shadowColor: 'black',
