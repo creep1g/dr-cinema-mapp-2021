@@ -54,6 +54,7 @@ const Movie = function ( { navigation: { setOptions } } ) {
 						<Image 
 							style={styles.image}
 							source={{uri: movie.omdb[0].Poster }} 
+							onError={() => test()}
 							/>
 							:
 							// Else use poster
