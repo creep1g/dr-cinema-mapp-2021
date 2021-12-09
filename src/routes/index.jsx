@@ -114,7 +114,8 @@ const Routes = function () {
 						component={Upcoming} />
 */}
 				<Stack.Screen
-						options={{ 
+						options={{
+							animationEnabled: false, 
 						headerStatusBarHeight: 30,
 						headerStyle: styles.header,
 						headerTitleAlign: 'center',

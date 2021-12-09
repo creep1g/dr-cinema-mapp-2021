@@ -27,7 +27,7 @@ const Youtube = function ( {videoId} ) {
 			width={winWidth-40}
 		  ref={controlRef}
 			videoId={videoId}
-		  onChangeState={onStateChange}
+		  
 		/>
 
 	  </View>
