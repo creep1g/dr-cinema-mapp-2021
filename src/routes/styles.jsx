@@ -9,7 +9,7 @@ export default StyleSheet.create ({
 		shadowOffset: {
 			height: 0,
 		},
-		elevation: 0,
+		elevation: 5,
 		borderWidth: 0
 	}
 });
