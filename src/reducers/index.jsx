@@ -9,12 +9,12 @@ import allMovies from './allMoviesReducer';
 import upcomingFilter from './upcomingFilterReducer';
 
 export default combineReducers({
-		cinema,
-    cinemas,
-    movies,
-    token,
-    upcoming,
-    movie,
-    allMovies,
-    upcomingFilter,
+  cinema,
+  cinemas,
+  movies,
+  token,
+  upcoming,
+  movie,
+  allMovies,
+  upcomingFilter,
 });
