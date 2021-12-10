@@ -5,7 +5,7 @@ import CinemasList from '../../components/CinemasList';
 import { getAllCinemas, selectedCinema } from '../../actions/cinemaActions';
 import { getUpcoming, setAllMovies } from '../../actions/moviesActions';
 
-const Cinemas = function ( { navigation: { navigate, setParams } } ) {
+const Cinemas = function ( { navigation: { navigate } } ) {
 
 	const token = useSelector(state => state.token);
 	// console.log(token);

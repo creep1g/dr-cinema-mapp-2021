@@ -46,7 +46,7 @@ const MoviesList = function ({ onSelect, upcoming, all, filter}) {
 		{
 		films.length === 0
 		?
-			<Text style={styles.card, { textAlign: 'center' }}>No Movies Found</Text>
+		<Text style={styles.card, { textAlign: 'center' }}>No Movies Found</Text>
 		:
 		<FlatList
     	numColumns={1}
