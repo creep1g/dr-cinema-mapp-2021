@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import CinemasList from '../../components/CinemasList';
 import {getAllCinemas, selectedCinema} from '../../actions/cinemaActions';
 import {getUpcoming, setAllMovies} from '../../actions/moviesActions';
+import PropTypes from 'prop-types';
 
 const Cinemas = function( {navigation: {navigate}} ) {
   const token = useSelector((state) => state.token);
@@ -35,6 +36,12 @@ const Cinemas = function( {navigation: {navigate}} ) {
     </View>
 
   );
+};
+
+Cinemas.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }),
 };
 
 export default Cinemas;
