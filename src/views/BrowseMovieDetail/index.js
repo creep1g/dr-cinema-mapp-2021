@@ -40,7 +40,7 @@ const BrowseMovieDetail = function ( { navigation: { setOptions } } ) {
                         />
                     </View>
 				)}
-				keyExtractor={(item) => item.cinema.name}
+				keyExtractor={(item, index) => index.toString()}
                 />
 
 	)
