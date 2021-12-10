@@ -1,53 +1,53 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import * as colors from '../../styles/colors';
 
-const { width: winWidth } = Dimensions.get('window');
+const {width: winWidth} = Dimensions.get('window');
 
-export default StyleSheet.create ({
-	image: {
-		width: 250,
-		height: 400,
-	},
+export default StyleSheet.create({
+  image: {
+    width: 250,
+    height: 400,
+  },
 
-	title: {
-		textAlign: 'center',
-		fontSize: 12,
-		marginBottom: 10,
-		paddingBottom: 5,
-	},
+  title: {
+    textAlign: 'center',
+    fontSize: 12,
+    marginBottom: 10,
+    paddingBottom: 5,
+  },
 
-	plotContainer: {
-		backgroundColor: colors.five,	
-		padding: 10,
-		margin: 10,
-		marginTop: 0,
-		marginBottom: 0,
-		width: winWidth-10,
-	},
+  plotContainer: {
+    backgroundColor: colors.five,
+    padding: 10,
+    margin: 10,
+    marginTop: 0,
+    marginBottom: 0,
+    width: winWidth-10,
+  },
 
-	plotText: {
-		padding: 5,
-		margin: 5,
-		fontSize: 16,
-	},
+  plotText: {
+    padding: 5,
+    margin: 5,
+    fontSize: 16,
+  },
 
-	shadow: {
-		// Shadow for iOS
-		shadowColor: 'black',
-		shadowOpacity: 0.3,
-		shadowRadius: 3,
-		shadowOffset: {
-			height: 1,
-			width: 2,
-		},
-		// Elevation for android
-		elevation: 8,
-		
-		overflow: 'hidden'
-	},
+  shadow: {
+    // Shadow for iOS
+    shadowColor: 'black',
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+    shadowOffset: {
+      height: 1,
+      width: 2,
+    },
+    // Elevation for android
+    elevation: 8,
 
-	border: {
-		borderColor: colors.one,
-		borderWidth: 0.7,
-	},
-})
+    overflow: 'hidden',
+  },
+
+  border: {
+    borderColor: colors.one,
+    borderWidth: 0.7,
+  },
+});
