@@ -63,7 +63,8 @@ export const getMoviesByCinema = (token, cinema) => {
 			
 			for (let i = 0; i < movies.length; i++){
 				for (let j = 0; j < movies[i].showtimes.length; j++){
-					if (movies[i].showtimes[j].cinema.id === cinema){
+					
+					if (movies[i].showtimes[j].cinema.id === cinema || movies[i].showtimes[j].cinema === cinema.toString()){
 								filtered.push(movies[i]);
 					};
 				};

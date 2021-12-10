@@ -25,7 +25,7 @@ const Movie = function ( { navigation: { setOptions } } ) {
 	const getShowTimes = () => {
 		const showtimes = []
 		for (let i = 0; i < movie.showtimes.length; i++){
-			if (movie.showtimes[i].cinema.id === cinema.id){
+			if (movie.showtimes[i].cinema.id === cinema.id || movie.showtimes[i].cinema === cinema.id.toString()){
 				for (let j = 0; j < movie.showtimes[i].schedule.length; j++){
 					showtimes.push(movie.showtimes[i]);		
 				}
