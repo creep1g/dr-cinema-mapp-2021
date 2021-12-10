@@ -1,49 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect} from 'react';
 import {Linking} from 'react-native';
-import { FlatList, View, TouchableHighlight, Text, Image, Pressable, ScrollView } from 'react-native';
-import { useSelector} from 'react-redux';
-import styles from './styles';
-import Genres from '../../components/Genres';
+import {FlatList, View} from 'react-native';
+import {useSelector} from 'react-redux';
 import TicketList from '../../components/TicketList';
-import MovieDetail from '../../components/Movie'; 
+import MovieDetail from '../../components/Movie';
+import PropTypes from 'prop-types';
 
 
-const BrowseMovieDetail = function ( { navigation: { setOptions } } ) {
-	
-	const movie = useSelector(state => state.movie)
-	
-	useEffect( () => {
-		(async () => {
-			setOptions({ title: movie.title });
-		})();
-	}, []);
+const BrowseMovieDetail = function( {navigation: {setOptions}} ) {
+  const movie = useSelector((state) => state.movie);
 
-	const openLink = (url) => {
-		Linking.openURL(url)
-	}
+  useEffect( () => {
+    (async () => {
+      setOptions({title: movie.title});
+    })();
+  }, []);
 
-	return(
+  const openLink = (url) => {
+    Linking.openURL(url);
+  };
 
-		<FlatList
-			ListHeaderComponent={
-				<>
-				<MovieDetail />
-				</>}
-				numColumns={1}
-				data={movie.showtimes}
-				renderItem={({item}) => (
-                    <View>
-											<TicketList
-													cinema={item.cinema.name}
-													showtime={item}
-													buy={(url) => openLink(url)}
-                        />
-                    </View>
-				)}
-				keyExtractor={(item, index) => index.toString()}
-                />
+  return (
 
-	)
-}
+    <FlatList
+      ListHeaderComponent={
+        <>
+          <MovieDetail />
+        </>}
+      numColumns={1}
+      data={movie.showtimes}
+      renderItem={({item}) => (
+        <View>
+          <TicketList
+            cinema={item.cinema.name}
+            showtime={item}
+            buy={(url) => openLink(url)}
+          />
+        </View>
+      )}
+      keyExtractor={(item, index) => index.toString()}
+    />
+
+  );
+};
+
+
+BrowseMovieDetail.propTypes = {
+  navigation: PropTypes.shape({
+    setOptions: PropTypes.func.isRequired,
+  }),
+};
+
 
 export default BrowseMovieDetail;
