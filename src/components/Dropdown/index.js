@@ -29,7 +29,7 @@ const Dropdown = function ({selected, isUpcoming}) {
           }
         }
         
-        return genres;
+			return genres.sort((a,b) => a > b ? 1 : -1);
     }
 
     return (
