@@ -1,4 +1,4 @@
-import * as API from '../services/api';
+import * as API from '../services/api-caller';
 import * as constants from '../constants';
 
 export const getAllMovies = (token) => {

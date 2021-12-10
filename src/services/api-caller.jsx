@@ -21,7 +21,7 @@ export const getUpcoming = async (token) => {
   const requestBody = {
     method: 'GET',
     headers: {'x-access-token': token,
-              'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
     },
   };
   return fetch(baseUrl+'/upcoming', requestBody)
@@ -37,7 +37,7 @@ export const getMovies = async (token) => {
     },
   };
 
-  await fetch(baseUrl+'/movies', requestBody)
+  return await fetch(baseUrl+'/movies', requestBody)
       .then( (response) => response.json() )
       .then( (res) => {
         return res;

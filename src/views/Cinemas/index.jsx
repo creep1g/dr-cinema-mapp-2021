@@ -7,8 +7,11 @@ import {getUpcoming, setAllMovies} from '../../actions/moviesActions';
 
 const Cinemas = function( {navigation: {navigate}} ) {
   const token = useSelector((state) => state.token);
-  // console.log(token);
   const dispatch = useDispatch();
+  // For some reason this works when nothing loads?
+  if (token === undefined) {
+    console.log(token);
+  };
 
   useEffect( () => {
     (async () => {

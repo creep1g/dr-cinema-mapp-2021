@@ -9,12 +9,15 @@ import {useSelector} from 'react-redux';
 
 const CinemasList = function({onSelect}) {
   const cinemas = useSelector((state) => state.cinemas);
+  // For some reason this works when the API does not answer?
+  if (cinemas === undefined) {
+    console.log(cinemas);
+  }
   return (
-
     <View style={[{flex: 1}, body.body]}>
       {
         // eslint-disable-next-line react/prop-types
-        cinemas.length === 0 ?
+        cinemas.length === undefined || cinemas.length === 0 ?
         <Text style={{textAlign: 'center', fontSize: 20}}>
             No Cinemas Found
         </Text> :
