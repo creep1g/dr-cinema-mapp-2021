@@ -1,7 +1,8 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {createMaterialTopTabNavigator} from
+  '@react-navigation/material-top-tabs';
 import styles from './styles';
 import * as colors from '../styles/colors';
 import Cinemas from '../views/Cinemas';
@@ -70,8 +71,8 @@ const Routes = function() {
             headerTitleStyle: {
               fontSize: 25,
             },
-				    headerStyle: styles.header,
-				    headerTintColor: '#fff',
+            headerStyle: styles.header,
+            headerTintColor: '#fff',
             title: ''}}
           name="Movie"
           component={Movie} />

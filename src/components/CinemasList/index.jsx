@@ -1,11 +1,14 @@
 import React from 'react';
-import {View, FlatList, Text, Image} from 'react-native';
+import {View, FlatList, Text} from 'react-native';
 import {TouchableHighlight} from 'react-native-gesture-handler';
+import {useSelector} from 'react-redux';
 import styles from './styles';
 import body from '../../styles/body';
 import * as colors from '../../styles/colors';
+import PropTypes from 'prop-types';
 
-const CinemasList = function({cinemas, onSelect}) {
+const CinemasList = function({onSelect}) {
+  const cinemas = useSelector((state) => state.cinemas);
   return (
 
     <View style={[{flex: 1}, body.body]}>
@@ -30,6 +33,10 @@ const CinemasList = function({cinemas, onSelect}) {
 
     </View>
   );
+};
+
+CinemasList.propTypes = {
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default CinemasList;

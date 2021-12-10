@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {auth} from '../../actions/tokenActions';
 
 const Tokenizer = () => {
