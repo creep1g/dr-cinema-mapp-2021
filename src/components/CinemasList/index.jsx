@@ -10,6 +10,11 @@ const CinemasList = function ({ cinemas, onSelect }) {
   return (
 	
 		<View style={[ {flex:1}, body.body ]}>
+			{
+			cinemas.length === 0
+			?
+			<Text style={{ textAlign: 'center', fontSize: 20}}>No Cinemas Found</Text>
+			:
 			<FlatList
 				numColumns={1}
 				data={cinemas}
@@ -28,7 +33,7 @@ const CinemasList = function ({ cinemas, onSelect }) {
 				)}
 				keyExtractor={item => item.id}
 			/>
-
+	}
    </View>
   );
 };
