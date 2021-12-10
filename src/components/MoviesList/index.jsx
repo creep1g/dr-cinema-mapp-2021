@@ -9,7 +9,7 @@ import {useSelector} from 'react-redux';
 
 const MoviesList = function ({ onSelect, upcoming, all, filter}) {
 	
-	const films = () => {
+	const movies = () => {
 		if (upcoming) {
 			if (filter) {
 				return useSelector(state => state.upcomingFilter)
@@ -40,12 +40,17 @@ const MoviesList = function ({ onSelect, upcoming, all, filter}) {
 	};
 
 
-		
+	const films = movies()	
 	return (
     <View style={{ flex: 1 }}>
+		{
+		films.length === 0
+		?
+			<Text style={styles.card, { textAlign: 'center' }}>No Movies Found</Text>
+		:
 		<FlatList
     	numColumns={1}
-      data={films()}
+      data={films}
       renderItem={({ item }) => (
 				<TouchableHighlight
 					activeOpacity={0.6}
@@ -101,7 +106,9 @@ const MoviesList = function ({ onSelect, upcoming, all, filter}) {
 		  }
       keyExtractor={movie => movie.id }
       />
+		}
     </View>
+		
   );
 };
 
